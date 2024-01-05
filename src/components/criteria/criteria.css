@@ -1,0 +1,29 @@
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    margin-bottom: 20px;
+    -webkit-column-break-inside: avoid;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  .btnContainer{
+    width: 95%;
+    padding: 1%;
+  }
+  /* Force varying heights to simulate dynamic content */
+  .card:first-child {
+    height: 485px;
+  }
+  
+  .card:nth-child(2) {
+    height: auto;
+  }
+  
+  .card:nth-child(3) {
+    height: 265px;
+  }
+  
+ 
