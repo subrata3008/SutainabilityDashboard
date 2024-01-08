@@ -28,7 +28,8 @@
     padding: 0 1%;
   } 
 .filterOptionsTop span{
-  margin-right: 1%;
+  margin-right: 5%;
+    line-height: 23px;
 }
 .filterOptionsTop input{   
   border-width: 0px 0px 1px 0px; 
