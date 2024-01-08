@@ -82,7 +82,6 @@ const Criteria = () => {
         });
         setIsLoading(false);
         setTableData(finalData.flat(Infinity));
-        console.log(finalData.flat(Infinity))
       })
       .catch((error) => {
         console.error(error);

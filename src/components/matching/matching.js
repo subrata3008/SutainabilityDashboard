@@ -8,9 +8,7 @@ const Matching = () => {
   const [tableData, setTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const getUrl = () =>{
-
-  }
+ 
   const callInputcriteria = (type) => { 
     let finalUrl;
     const urlWithYears = !(monthValue && yearValue)
