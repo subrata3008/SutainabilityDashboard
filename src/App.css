@@ -1,38 +1,270 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Assign grid instructions to our parent grid container, mobile-first (hide the sidenav) */
+.grid-container {
   display: flex;
   flex-direction: column;
+}
+
+.menu-icon {
+  position: fixed; /* Needs to stay visible for all mobile scrolling */
+  display: flex;
+  top: 5px;
+  left: 10px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #8b9ee7;
+  border-radius: 50%;
+  z-index: 3;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 15px;
+  margin-left: 35%;
+}
+.main-card{
+  border: 1px solid red;
+  height: 200px;
+  overflow: scroll;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,td{
+  padding: 2%;
+}
+.p-datatable-table{
+  border-spacing: 20px !important;
+  border: 1px;
+}
+.p-datatable .p-sortable-column {
+  padding-left: 1%;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+/* Give every child element its grid name */
+.header {
+  grid-area: header; 
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;  
+  background-color: #67BC2A;
+}
+.p-datatable {
+  width: 88vw !important;
+}
+/* Make room for the menu icon on mobile */
+.header_main { 
+  background-color: #67BC2A;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sidenav {
+  grid-area: sidenav;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  overflow-y: auto;
+  transform: translateX(-245px);
+  transition: all .6s ease-in-out;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  z-index: 2; /* Needs to sit above the hamburger menu icon */
+  background-color: #6366F1;
+}
+
+.sidenav.active {
+  transform: translateX(0);
+}
+
+.sidenav__close-icon {
+  position: absolute;
+  visibility: visible;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #ddd;
+}
+
+.sidenav__list {
+  display: flex;
+  padding: 0; 
+  margin: 0;
+  list-style-type: none; 
+  background: #CAFAA6;
+}
+
+.sidenav__list-item {
+  padding: 15px 11px 15px 40px;
+  color: #000;
+}
+
+.sidenav__list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.main {
+  grid-area: main;
+  color: #000;
+  margin-top: 10vh;
+
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  height: 150px;
+  background-color: #e3e4e6;
+  color: slategray;
+}
+
+.main-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  grid-auto-rows: 94px;
+  grid-gap: 20px;
+  margin: 20px;
+}
+
+.overviewcard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #d3d3;
+}
+
+.main-cards {
+  column-count: 1;
+  column-gap: 20px;
+  margin: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  color: #000;
+  background-color: #CAFAA6;
+}
+
+/* Non-mobile styles, 750px breakpoint */
+@media only screen and (min-width: 46.875em) {
+  /* Show the sidenav */
+  .grid-container {
+    grid-template-columns: 0fr;
+    grid-template-areas:
+      "sidenav header"
+      "sidenav main"
+      "sidenav footer";
   }
-  to {
-    transform: rotate(360deg);
+
+  .header_main {
+    padding: 2vh;
+    display: flex;
+    background-color: aliceblue;
+    width: 45px;
+    border-radius: 50%;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+  .sidenav {
+    position: relative;
+    transform: translateX(0);
+  }
+
+  .sidenav__close-icon {
+    visibility: hidden;
+  }
+}
+
+/** Tootip  Css*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted white;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 320px;
+  background-color: #ededed;
+  color: #000000;
+  text-align: center; 
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  border: 1px solid #d1cbcb;
+}
+.tooltiptext{
+  list-style: none;
+  display:  flex;
+  justify-content: space-evenly;
+  left: -10px !important;
+}
+.tooltiptext li{   
+   width: 100px;
+    border-right: 1px solid gray;
+}
+.tooltiptext li :last-child{    
+   border: 0px;
+}
+.tooltiptext li a{   
+  text-decoration: none;
+}
+.tooltiptext li:hover{   
+  color: #67BC2A;
+}
+
+.active{
+  color: #67BC2A;
+}
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 9px;
+  border-style: solid;
+  border-color: transparent transparent #dfdfdf transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+/* Medium screens breakpoint (1050px) */
+@media only screen and (min-width: 65.625em) {
+  /* Break out main cards into two columns */
+  .main-cards {
+    column-count: 2;
   }
 }
