@@ -1,0 +1,71 @@
+
+/*** All data table css**/
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+    background: #e6ffe6;
+    color: black;
+  }
+  .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+    border-color: #67BC2A;
+  }
+  .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus{
+    box-shadow: 0 0 0 0.2rem #d8ffdc;
+    border-color: #67BC2A;
+  }
+  .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: #67BC2A;
+    background: #67BC2A;
+  }
+  .p-datatable .p-sortable-column.p-highlight {
+    background: #e6ffe6;
+    color: #67BC2A;
+  }
+  .p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+    color: #67BC2A;
+  }
+  .p-datatable .p-column-header-content { 
+    justify-content: space-between;
+  }
+  .p-column-filter-menu-button.p-column-filter-menu-button-active, .p-column-filter-menu-button.p-column-filter-menu-button-active:hover {
+    background: #e6ffe6;
+    color: #67BC2A;
+  }
+  .p-datatable-emptymessage td{
+    padding-left: 43vw;
+  }
+  .p-button { 
+    color: #fff;
+    background: #67BC2A;
+    border: 1px solid #67BC2A;
+  }
+  .p-inputtext:enabled:focus { 
+    box-shadow: 0 0 0 0.2rem #e6ffe6;
+    border-color: #67BC2A;
+  }
+  .p-inputtext:enabled:hover {
+    border-color: #67BC2A;
+  }
+
+
+  /* HTML: <div class="loader"></div> */
+.loader {
+  height: 30px;
+  aspect-ratio: 2.5;
+  --_g: no-repeat radial-gradient(farthest-side,#000 90%,#0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 20% 50%;
+  animation: l44 1s infinite linear alternate; 
+}
+@keyframes l44 {
+  0%,
+  5%    {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+  12.5% {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+  25%   {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 0   ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+  37.5% {background-position: calc(0*100%/3) 100%,calc(1*100%/3) 0   ,calc(2*100%/3) 0   ,calc(3*100%/3) 50% }
+  50%   {background-position: calc(0*100%/3) 100%,calc(1*100%/3) 100%,calc(2*100%/3) 0   ,calc(3*100%/3) 0   }
+  62.5% {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 100%,calc(2*100%/3) 100%,calc(3*100%/3) 0   }
+  75%   {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 100%,calc(3*100%/3) 100%}
+  87.5% {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 100%}
+  95%,
+  100%  {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+}
+  

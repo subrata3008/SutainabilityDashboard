@@ -1,0 +1,101 @@
+.top-section-container{
+    color: #000;
+}
+
+.table-container{
+  padding: 2% 2%;
+}
+.filter-container{
+  margin: 0 2%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 95vw;
+    background-color: #E6EFE3;
+}
+.preset-section{
+  float: left;
+    padding: 0% 1%;
+    font-size: 12px;
+} 
+.bottom-block{
+  display: flex;
+  padding: 2% 0%;
+} 
+  .filterOptionsTop{
+    display: flex; 
+    font-size: 12px; 
+    padding: 0 1%;
+  } 
+.filterOptionsTop span{
+  margin-right: 1%;
+}
+.filterOptionsTop input{   
+  border-width: 0px 0px 1px 0px; 
+  outline: 0;
+  width: 100px;
+}
+.filterOptions{
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  width: 10vw;
+  padding: 0 1%;
+}
+.quantity{
+  width: 10vw;
+}
+.filterOptions span{
+  text-align: left;
+  font-style: italic;
+}
+.filterOptions input,.filterOptions select,.preset-section select {
+  border-width: 0px 0px 1px 0px;
+  background-color: #E6EFE3;
+  outline: 0;
+}
+.filterOptions input,.filterOptions select{
+  padding-top: 10%;
+
+}
+.top-block{
+  padding-top: 1%;
+}
+.downloadBtn,.saveBtn,.searchBtn{
+    cursor: pointer;
+    float: right;
+    border: 1px solid gray;
+    border-radius: 2px;
+    background: #67BC2A;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 0.5vw;
+    margin: 0 1vh;
+}
+.date-filter-container{
+  display: flex;
+  padding: 1% 1% 0 1%;
+}
+.manual-filter-container{  
+  display: flex; 
+  padding: 1% 1% 0 2%;
+}
+.date-filter-container{
+  margin-right: 1% ;
+}
+.sale-details{
+  border: 1px solid black;
+  width: 95vw; 
+  background-color: #E6EFE3;
+}
+.sale-details tr:first-child{
+  border-bottom: 1px solid black
+}
+.sale-details th, .sale-details td{
+  border: 0 !important;
+  font-size: 11px;
+  width: 156px;
+  padding: 6px;
+  font-style: italic;
+}
