@@ -2,6 +2,7 @@ import React, {  useState } from "react";
 import "../matching/matching.css";
 import DatatableComp from "../datatable/datatable";
 import SalesDatatable from "../salesDatatable/salesDatatable";
+import ApiLoader from "../loader/loader";
 
 const Matching = () => {
   const [monthValue, setMonthValue] = useState("");
@@ -82,11 +83,12 @@ const Matching = () => {
 
 
   const bioMatchingFunc = () =>{
-    debugger;
+   setIsLoading(true);
    const  {SalesOrder,Material} = selectedSales[0];
    fetch('https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf?salesordernumber=+'+ SalesOrder +'&product=+'+ Material)
    .then(response=>response.json())
    .then(finalResp=>{
+    setIsLoading(false);
     alert(finalResp.message);
    })
    .catch(err=>{
@@ -95,6 +97,8 @@ const Matching = () => {
   }
  
   return (
+    <>
+    <ApiLoader isLoading={isLoading}/>
     <div className="top-section-container">
       <div className="date-filter-container">
         <div className="filterOptionsTop">
@@ -180,12 +184,7 @@ const Matching = () => {
           ></i>{" "}
           Manual
         </span>
-      </div>
-      {isLoading && (
-        <div className="centerText">
-          <div className="loader"></div>
-        </div>
-      )}
+      </div> 
       {isNodata && (
         <div className="centerText">
           <span>No data found</span>
@@ -197,6 +196,7 @@ const Matching = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

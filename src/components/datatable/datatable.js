@@ -10,12 +10,14 @@ const DatatableComp = (props) => {
     const [filters, setFilters] = useState({
       po: { value: null, matchMode: FilterMatchMode.EQUALS },
       POItem: { value: null, matchMode: FilterMatchMode.EQUALS },
+      POdate: { value: null, matchMode: FilterMatchMode.EQUALS },
       BatchNo: { value: null, matchMode: FilterMatchMode.EQUALS },
         CertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
         feedStockStype: { value: null, matchMode: FilterMatchMode.CONTAINS },
         origin: { value: null, matchMode: FilterMatchMode.EQUALS },
         carbonIntensity: { value: null, matchMode: FilterMatchMode.EQUALS },
         quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
+        UoM: { value: null, matchMode: FilterMatchMode.EQUALS }
       });
 
     
@@ -38,7 +40,7 @@ const DatatableComp = (props) => {
       backgroundColor: "var(--green-200)",
       fontSize:"12px"
     }}
-    emptyMessage={isLoading ? <div className="loader"></div>  : "No data found"}
+    emptyMessage={isLoading ? "Loading..." : "No data found"}
   >
     <Column
       selectionMode="multiple"

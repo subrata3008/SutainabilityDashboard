@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../criteria/criteria.css"; 
 import DatatableComp from "../datatable/datatable";
+import ApiLoader from "../loader/loader";
 
 const Criteria = () => {
   const [tableData, setTableData] = useState([]);
@@ -82,6 +83,8 @@ const Criteria = () => {
   }, []);
 
   return (
+    <> 
+    <ApiLoader isLoading={isLoading}/>
     <div className="card">
       <div className="btnContainer">
         <span className="downloadBtn" onClick={exportExcel}>
@@ -90,6 +93,7 @@ const Criteria = () => {
       </div>
       <DatatableComp tableData={tableData} isLoading={isLoading} />
     </div>
+    </>
   );
 };
 
