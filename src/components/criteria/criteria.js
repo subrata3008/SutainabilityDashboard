@@ -75,8 +75,11 @@ const Criteria = () => {
               CertID: eachBatch.CertID,
               origin: eachBatch.origin,
               quantity: eachBatch.quantity,
+              UoM:eachbatchData.UoM,
               po: eachbatchData.PO,
-              POItem:eachbatchData.POItem
+              POdate:eachbatchData.POdate,
+              POItem:eachbatchData.POItem,
+              carbonIntensity: eachBatch.carbonIntensity
             };
           });
         });

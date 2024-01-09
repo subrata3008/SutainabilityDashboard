@@ -15,6 +15,7 @@ const DatatableComp = (props) => {
         CertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
         feedStockStype: { value: null, matchMode: FilterMatchMode.CONTAINS },
         origin: { value: null, matchMode: FilterMatchMode.EQUALS },
+        carbonIntensity: { value: null, matchMode: FilterMatchMode.EQUALS },
         quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
       });
 
@@ -60,6 +61,13 @@ const DatatableComp = (props) => {
     ></Column>
     <Column
       filter
+      filterPlaceholder="Search by POdate"
+      sortable
+      field="POdate"
+      header="Purchase order date"
+    ></Column>
+    <Column
+      filter
       filterPlaceholder="Search by Certificate"
       sortable
       field="CertID"
@@ -81,10 +89,24 @@ const DatatableComp = (props) => {
     ></Column>
     <Column
       filter
+      filterPlaceholder="Search by Carbon Intensity"
+      sortable
+      field="carbonIntensity"
+      header="Carbon Intensity"
+    ></Column>
+    <Column
+      filter
       filterPlaceholder="Search by Quantity"
       sortable
       field="quantity"
       header="Quantity"
+    ></Column>
+    <Column
+      filter
+      filterPlaceholder="Search by Unit of Measure"
+      sortable
+      field="UoM"
+      header="Unit of Measure"
     ></Column>
     <Column
       filter

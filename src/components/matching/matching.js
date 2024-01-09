@@ -12,46 +12,31 @@ const Matching = () => {
   const callInputcriteria = (type) => {
     setTableData([]);
     setIsLoading(true);
-    let finalUrl;
-    const urlWithYears = !(monthValue && yearValue)
+    const InputCriteriaUrl = !(monthValue && yearValue)
       ? "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
       : "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria?year=" +
         yearValue +
         "&month=" +
         monthValue;
-    if (type === "filter") {
-      finalUrl = !(monthValue && yearValue)
-        ? "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
-        : "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria?year=" +
-          yearValue +
-          "&month=" +
-          monthValue;
-    } else if (type === "auto") {
-      finalUrl = !(monthValue && yearValue)
-        ? "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf"
-        : "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf?year=" +
-          yearValue +
-          "&month=" +
-          monthValue;
-    } else if (type === "manual") {
-      finalUrl = !(monthValue && yearValue)
-        ? " https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching"
-        : " https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching?year=" +
-          yearValue +
-          "&month=" +
-          monthValue;
-    }
-    fetch(finalUrl)
-      .then((response) => response.json())
-      .then((finalResp) => {
-        console.log(finalResp);
-        let finalData = [];
-        if (finalResp.records.length > 0) {
-          let dataWithBatch = finalResp.records.filter(
-            (eachdata) =>
-              eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
-          );
-          finalData = dataWithBatch.map((eachbatchData) => {
+    const SalesOrderUrl = !(monthValue && yearValue)
+      ? "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching"
+      : "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching?year=" +
+        yearValue +
+        "&month=" +
+        monthValue;
+    const InputCriteria = fetch(InputCriteriaUrl).then((response) =>
+      response.json()
+    );
+    const SalesOrder = fetch(SalesOrderUrl).then((response) => response.json());
+    //fetch(finalUrl)
+    Promise.all([InputCriteria, SalesOrder])
+      .then(([InputCriteriaData, SalesOrderData]) => {
+        let dataWithBatch = InputCriteriaData.records.filter(
+          (eachdata) =>
+            eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
+        );
+        if (InputCriteriaData.records.length > 0) {
+          let finalData = dataWithBatch.map((eachbatchData) => {
             return eachbatchData.batch.map((eachBatch) => {
               return {
                 feedStockStype: !eachbatchData.FeedStockType
@@ -62,8 +47,11 @@ const Matching = () => {
                 CertID: eachBatch.CertID,
                 origin: eachBatch.origin,
                 quantity: eachBatch.quantity,
+                UoM: eachbatchData.UoM,
                 po: eachbatchData.PO,
+                POdate: eachbatchData.POdate,
                 POItem: eachbatchData.POItem,
+                carbonIntensity: eachBatch.carbonIntensity,
               };
             });
           });
@@ -75,7 +63,6 @@ const Matching = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        setIsLoading(false);
         console.error(error);
       });
   };
