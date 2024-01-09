@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../criteria/criteria.css";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { FilterMatchMode, FilterOperator } from "primereact/api";
+import "../criteria/criteria.css"; 
 import DatatableComp from "../datatable/datatable";
 
 const Criteria = () => {
   const [tableData, setTableData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [selectedDatas, setSelectedDatas] = useState(null);
-  const [filters, setFilters] = useState({
-    BatchNo: { value: null, matchMode: FilterMatchMode.EQUALS },
-    CertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    feedStockStype: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    origin: { value: null, matchMode: FilterMatchMode.EQUALS },
-    quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
-  });
+  const [isLoading, setIsLoading] = useState(false);  
 
   /**
    * Export as Excel Method
@@ -65,8 +54,9 @@ const Criteria = () => {
         eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
         let finalData = dataWithBatch.map((eachbatchData) => {
-          return eachbatchData.batch.map((eachBatch) => {
+          return eachbatchData.batch.map((eachBatch,index) => {
             return {
+              id: index,
               feedStockStype: !eachbatchData.FeedStockType
                 ? ""
                 : eachbatchData.FeedStockType,
@@ -75,7 +65,7 @@ const Criteria = () => {
               CertID: eachBatch.CertID,
               origin: eachBatch.origin,
               quantity: eachBatch.quantity,
-              UoM:eachbatchData.UoM,
+              UoM: 'Tons',//eachbatchData.UoM,
               po: eachbatchData.PO,
               POdate:eachbatchData.POdate,
               POItem:eachbatchData.POItem,

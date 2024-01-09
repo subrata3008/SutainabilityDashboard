@@ -6,8 +6,7 @@ import { FilterMatchMode, FilterOperator } from "primereact/api";
 
 const DatatableComp = (props) => { 
     const {tableData,isLoading} = props;
-    const [selectedDatas, setSelectedDatas] = useState(null);
-    const [rowClick, setRowClick] = useState(false);
+    const [selectedDatas, setSelectedDatas] = useState(null); 
     const [filters, setFilters] = useState({
       po: { value: null, matchMode: FilterMatchMode.EQUALS },
       POItem: { value: null, matchMode: FilterMatchMode.EQUALS },

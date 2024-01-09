@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../matching/matching.css";
 import DatatableComp from "../datatable/datatable";
+import SalesDatatable from "../salesDatatable/salesDatatable";
 
 const Matching = () => {
   const [monthValue, setMonthValue] = useState("");
   const [yearValue, setYearValue] = useState("");
   const [tableData, setTableData] = useState([]);
+  const [selectedSales, setselectedSales] = useState([]);
+  const [salesTableData, setSalesTableData] = useState([]);  
   const [isLoading, setIsLoading] = useState(false);
   const [isNodata, setIsNodata] = useState(false);
 
   const callInputcriteria = (type) => {
     setTableData([]);
+    setSalesTableData([]);
     setIsLoading(true);
     const InputCriteriaUrl = !(monthValue && yearValue)
       ? "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
@@ -31,14 +35,20 @@ const Matching = () => {
     //fetch(finalUrl)
     Promise.all([InputCriteria, SalesOrder])
       .then(([InputCriteriaData, SalesOrderData]) => {
+        let finalSalesData = SalesOrderData.records.map((eachSalesdata,indx)=>{
+          eachSalesdata.id=indx;
+          return eachSalesdata;
+        })
+        setSalesTableData(finalSalesData);
         let dataWithBatch = InputCriteriaData.records.filter(
           (eachdata) =>
             eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
         if (InputCriteriaData.records.length > 0) {
           let finalData = dataWithBatch.map((eachbatchData) => {
-            return eachbatchData.batch.map((eachBatch) => {
+            return eachbatchData.batch.map((eachBatch,index) => {
               return {
+                id: index,
                 feedStockStype: !eachbatchData.FeedStockType
                   ? ""
                   : eachbatchData.FeedStockType,
@@ -57,15 +67,35 @@ const Matching = () => {
           });
           setIsNodata(false);
           setTableData(finalData.flat(Infinity));
+          setSalesTableData(SalesOrderData.records);
         } else {
           setIsNodata(true);
         }
         setIsLoading(false);
+        
+        console.log(salesTableData)
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
+
+  const bioMatchingFunc = () =>{
+    debugger;
+   const  {SalesOrder,Material} = selectedSales[0];
+   fetch('https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf?salesordernumber=+'+ SalesOrder +'&product=+'+ Material)
+   .then(response=>response.json())
+   .then(finalResp=>{
+    alert(finalResp.message);
+   })
+   .catch(err=>{
+    console.log(err);
+   })
+  }
+
+  useEffect(()=>{
+  },[selectedSales])
   return (
     <div className="top-section-container">
       <div className="date-filter-container">
@@ -86,34 +116,9 @@ const Matching = () => {
       </div>
 
       <div className="table-container">
-        <table className="sale-details">
-          <tr>
-            <th>
-              <span style={{ color: "#67BC2A" }}>Sales Order</span>
-            </th>
-            <th>Sales Order Number</th>
-            <th>Sales Date</th>
-            <th>Customer</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Unit of Measures</th>
-            <th>Price</th>
-            <th>Delivery Address - City</th>
-          </tr>
-          <tbody>
-            <tr>
-              <td></td>
-              <td>213123123</td>
-              <td>11/02/2023</td>
-              <td>XYZ</td>
-              <td>XYZ</td>
-              <td>XYZ</td>
-              <td>MT</td>
-              <td>XYZ</td>
-              <td>Houston, TX</td>
-            </tr>
-          </tbody>
-        </table>
+        <SalesDatatable
+         salesTableData={salesTableData}
+         setselectedSales={setselectedSales}/>
       </div>
       <div className="filter-container">
         <div className="top-block">
@@ -166,7 +171,7 @@ const Matching = () => {
       </div>
 
       <div className="manual-filter-container">
-        <span className="saveBtn" onClick={() => callInputcriteria("auto")}>
+        <span className="saveBtn" onClick={bioMatchingFunc}>
           <i className="fa fa-magic" aria-hidden="true"></i> Auto
         </span>
         <span className="saveBtn">
