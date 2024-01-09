@@ -100,3 +100,9 @@
   padding: 6px;
   font-style: italic;
 }
+
+.centerText{
+  display: flex;
+  justify-content: center;
+  padding: 3%;
+}

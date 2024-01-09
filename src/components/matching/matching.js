@@ -7,9 +7,11 @@ const Matching = () => {
   const [yearValue, setYearValue] = useState("");
   const [tableData, setTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNodata, setIsNodata] = useState(false);
 
- 
-  const callInputcriteria = (type) => { 
+  const callInputcriteria = (type) => {
+    setTableData([]);
+    setIsLoading(true);
     let finalUrl;
     const urlWithYears = !(monthValue && yearValue)
       ? "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
@@ -17,58 +19,63 @@ const Matching = () => {
         yearValue +
         "&month=" +
         monthValue;
-    if(type === 'filter'){
+    if (type === "filter") {
       finalUrl = !(monthValue && yearValue)
-      ? "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
-      : "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria?year=" +
-        yearValue +
-        "&month=" +
-        monthValue;
-    }else if(type === 'auto'){
+        ? "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
+        : "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria?year=" +
+          yearValue +
+          "&month=" +
+          monthValue;
+    } else if (type === "auto") {
       finalUrl = !(monthValue && yearValue)
-      ? "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf"
-      : "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf?year=" +
-        yearValue +
-        "&month=" +
-        monthValue;
-    }else if(type === 'manual'){
+        ? "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf"
+        : "https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf?year=" +
+          yearValue +
+          "&month=" +
+          monthValue;
+    } else if (type === "manual") {
       finalUrl = !(monthValue && yearValue)
-      ? " https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching"
-      : " https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching?year=" +
-        yearValue +
-        "&month=" +
-        monthValue;
+        ? " https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching"
+        : " https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching?year=" +
+          yearValue +
+          "&month=" +
+          monthValue;
     }
     fetch(finalUrl)
       .then((response) => response.json())
       .then((finalResp) => {
-        debugger
-        let dataWithBatch = finalResp.records.filter((eachdata) =>
-          eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
-        );
-        let finalData = dataWithBatch.map((eachbatchData) => {
-          return eachbatchData.batch.map((eachBatch) => {
-            return {
-              feedStockStype: !eachbatchData.FeedStockType
-                ? ""
-                : eachbatchData.FeedStockType,
-              //.length > 1 ? eachbatchData.FeedStockType.join(): eachbatchData.FeedStockType,
-              BatchNo: eachBatch.BatchNo,
-              CertID: eachBatch.CertID,
-              origin: eachBatch.origin,
-              quantity: eachBatch.quantity,
-              po: eachbatchData.PO,
-              POItem:eachbatchData.POItem
-            };
+        console.log(finalResp);
+        let finalData = [];
+        if (finalResp.records.length > 0) {
+          let dataWithBatch = finalResp.records.filter(
+            (eachdata) =>
+              eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
+          );
+          finalData = dataWithBatch.map((eachbatchData) => {
+            return eachbatchData.batch.map((eachBatch) => {
+              return {
+                feedStockStype: !eachbatchData.FeedStockType
+                  ? ""
+                  : eachbatchData.FeedStockType,
+                //.length > 1 ? eachbatchData.FeedStockType.join(): eachbatchData.FeedStockType,
+                BatchNo: eachBatch.BatchNo,
+                CertID: eachBatch.CertID,
+                origin: eachBatch.origin,
+                quantity: eachBatch.quantity,
+                po: eachbatchData.PO,
+                POItem: eachbatchData.POItem,
+              };
+            });
           });
-        });
+          setIsNodata(false);
+          setTableData(finalData.flat(Infinity));
+        } else {
+          setIsNodata(true);
+        }
         setIsLoading(false);
-        setTableData(finalData.flat(Infinity)); 
-        debugger
-        console.log(dataWithBatch)
-        console.log(finalData.flat(Infinity))
       })
       .catch((error) => {
+        setIsLoading(false);
         console.error(error);
       });
   };
@@ -86,7 +93,7 @@ const Matching = () => {
           <span>Year:</span>
           <input type="text" onChange={(e) => setYearValue(e.target.value)} />
         </div>
-        <span className="saveBtn" onClick={()=>callInputcriteria('filter')}>
+        <span className="saveBtn" onClick={() => callInputcriteria("filter")}>
           Filter
         </span>
       </div>
@@ -172,14 +179,29 @@ const Matching = () => {
       </div>
 
       <div className="manual-filter-container">
-        <span className="saveBtn" onClick={()=>callInputcriteria('auto')}>
+        <span className="saveBtn" onClick={() => callInputcriteria("auto")}>
           <i className="fa fa-magic" aria-hidden="true"></i> Auto
         </span>
         <span className="saveBtn">
-          <i className="fa fa-hand-rock-o" aria-hidden="true" onClick={()=>callInputcriteria('manual')}></i> Manual
+          <i
+            className="fa fa-hand-rock-o"
+            aria-hidden="true"
+            onClick={() => callInputcriteria("manual")}
+          ></i>{" "}
+          Manual
         </span>
       </div>
-      {tableData.length !==0 && (
+      {isLoading && (
+        <div className="centerText">
+          <div className="loader"></div>
+        </div>
+      )}
+      {isNodata && (
+        <div className="centerText">
+          <span>No data found</span>
+        </div>
+      )}
+      {tableData.length !== 0 && (
         <div className="table-container">
           <DatatableComp tableData={tableData} isLoading={isLoading} />
         </div>

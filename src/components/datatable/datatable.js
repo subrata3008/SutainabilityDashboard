@@ -9,7 +9,9 @@ const DatatableComp = (props) => {
     const [selectedDatas, setSelectedDatas] = useState(null);
     const [rowClick, setRowClick] = useState(false);
     const [filters, setFilters] = useState({
-        BatchNo: { value: null, matchMode: FilterMatchMode.EQUALS },
+      po: { value: null, matchMode: FilterMatchMode.EQUALS },
+      POItem: { value: null, matchMode: FilterMatchMode.EQUALS },
+      BatchNo: { value: null, matchMode: FilterMatchMode.EQUALS },
         CertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
         feedStockStype: { value: null, matchMode: FilterMatchMode.CONTAINS },
         origin: { value: null, matchMode: FilterMatchMode.EQUALS },
@@ -65,10 +67,10 @@ const DatatableComp = (props) => {
     ></Column>
     <Column
       filter
-      filterPlaceholder="Search by Feed Stocks type"
+      filterPlaceholder="Search by Feed Stock"
       sortable
       field="feedStockStype"
-      header="Feed Stocks type"
+      header="Feed Stock"
     ></Column>
     <Column
       filter
