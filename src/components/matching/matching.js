@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "../matching/matching.css";
 import DatatableComp from "../datatable/datatable";
 import SalesDatatable from "../salesDatatable/salesDatatable";
@@ -93,9 +93,7 @@ const Matching = () => {
     console.log(err);
    })
   }
-
-  useEffect(()=>{
-  },[selectedSales])
+ 
   return (
     <div className="top-section-container">
       <div className="date-filter-container">
