@@ -32,7 +32,7 @@ const DatatableComp = (props) => {
     selectionMode={"checkbox"}
     selection={selectedDatas} 
     onSelectionChange={(e) => {console.log(e.value); setSelectedDatas(e.value)}}
-    dataKey="po"
+    dataKey="id"
     tableStyle={{
       minWidth: "40rem",
       backgroundColor: "var(--green-200)",
