@@ -42,15 +42,12 @@ const Criteria = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    const InputCriteria = fetch(
-      "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
-    ).then((response) => response.json());
-    const SalesOrder = fetch(
-      "https://q4iwdm3yqc.execute-api.us-east-1.amazonaws.com/SalesOrder"
-    ).then((response) => response.json());
-    Promise.all([InputCriteria, SalesOrder])
-      .then(([InputCriteriaData, SalesOrderData]) => {
+    setIsLoading(true); 
+      fetch(
+        "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
+      ).then((response) => response.json())
+      .then((InputCriteriaData) => { 
+        setIsLoading(false);
         let dataWithBatch = InputCriteriaData.records.filter((eachdata) =>
         eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
@@ -74,7 +71,6 @@ const Criteria = () => {
             };
           });
         });
-        setIsLoading(false);
         setTableData(finalData.flat(Infinity));
       })
       .catch((error) => {
