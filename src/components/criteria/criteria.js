@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../criteria/criteria.css"; 
 import DatatableComp from "../datatable/datatable";
-import ApiLoader from "../loader/loader";
+import ApiLoader from "../loader/loader"; 
 
 const Criteria = () => {
-  const [tableData, setTableData] = useState([]);
+  const [salesTableData, setSalesTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);  
 
   /**
@@ -12,7 +12,7 @@ const Criteria = () => {
    */
   const exportExcel = () => {
     import("xlsx").then((xlsx) => {
-      const worksheet = xlsx.utils.json_to_sheet(tableData);
+      const worksheet = xlsx.utils.json_to_sheet(salesTableData);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ["data"] };
       const excelBuffer = xlsx.write(workbook, {
         bookType: "xlsx",
@@ -42,36 +42,39 @@ const Criteria = () => {
   };
 
   useEffect(() => {
+    setSalesTableData([]);
+    const InputCriteria = fetch('https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria').then((response) => response.json());
     setIsLoading(true); 
-      fetch(
-        "https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria"
-      ).then((response) => response.json())
+    Promise.all([InputCriteria])
       .then((InputCriteriaData) => { 
+        setSalesTableData([]);
         setIsLoading(false);
-        let dataWithBatch = InputCriteriaData.records.filter((eachdata) =>
+        console.log(InputCriteria);
+        let dataWithBatch = InputCriteriaData[0].records.filter((eachdata) =>
         eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
-        let finalData = dataWithBatch.map((eachbatchData) => {
+        let flag = 0;
+        let finalData = dataWithBatch.map((eachbatchData,indexOuter) => {
           return eachbatchData.batch.map((eachBatch,index) => {
+            flag++; 
             return {
-              id: index,
-              feedStockStype: !eachbatchData.FeedStockType
-                ? ""
-                : eachbatchData.FeedStockType,
-              //.length > 1 ? eachbatchData.FeedStockType.join(): eachbatchData.FeedStockType,
-              BatchNo: eachBatch.BatchNo,
-              CertID: eachBatch.CertID,
-              origin: eachBatch.origin,
-              quantity: eachBatch.quantity,
+              id: flag,
+              feedStockStype:  eachbatchData.FeedStockType || '',
+              BatchNo: eachBatch.BatchNo || '',
+              CertID: eachBatch.CertID || '',
+              origin: eachBatch.origin || '',
+              quantity: eachBatch.quantity || '',
               UoM: 'Tons',//eachbatchData.UoM,
-              po: eachbatchData.PO,
-              POdate:eachbatchData.POdate,
-              POItem:eachbatchData.POItem,
-              carbonIntensity: eachBatch.carbonIntensity
+              po: eachbatchData.PO || '',
+              POdate:eachbatchData.POdate || '',
+              POItem:eachbatchData.POItem || '',
+              carbonIntensity: eachBatch.carbonIntensity || ''
             };
           });
         });
-        setTableData(finalData.flat(Infinity));
+        setSalesTableData(finalData.flat(Infinity));
+        
+        console.log(salesTableData)
       })
       .catch((error) => {
         console.error(error);
@@ -86,8 +89,8 @@ const Criteria = () => {
         <span className="downloadBtn" onClick={exportExcel}>
           <i className="fa fa-download" aria-hidden="true"></i>Download to Excel
         </span>
-      </div>
-      <DatatableComp tableData={tableData} isLoading={isLoading} />
+      </div> 
+        <DatatableComp salesTableData={salesTableData} isLoading={isLoading} /> 
     </div>
     </>
   );
