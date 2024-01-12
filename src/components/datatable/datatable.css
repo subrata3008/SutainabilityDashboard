@@ -45,6 +45,18 @@
     border-color: #67BC2A;
   }
 
+  .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    color: #67BC2A;
+    background: #e6ffe6;
+}
+.p-dropdown:not(.p-disabled):hover {
+  border-color: #67BC2A;
+}
+
+.p-dropdown:not(.p-disabled).p-focus{
+  box-shadow: 0 0 0 0.2rem #e6ffe6; 
+  border-color: #67BC2A;
+}
 
   /* HTML: <div class="loader"></div> */
 .loader {
