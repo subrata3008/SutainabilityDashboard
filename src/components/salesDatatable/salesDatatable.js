@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import "../datatable/datatable.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { FilterMatchMode, FilterOperator } from "primereact/api";
+import { FilterMatchMode } from "primereact/api";
 
 const SalesDatatable = (props) => {
   const { salesTableData, isLoading,setselectedSales } = props; 
