@@ -7,12 +7,12 @@ import { FilterMatchMode, FilterOperator } from "primereact/api";
 const SalesDatatable = (props) => {
   const { salesTableData, isLoading,setselectedSales } = props; 
   const [selectedDatas, setSelectedDatas] = useState(null); 
-  const [filters, setFilters] = useState({
+  const [filters, ] = useState({
     SalesOrder: { value: null, matchMode: FilterMatchMode.EQUALS },
     SalesOrderItem: { value: null, matchMode: FilterMatchMode.EQUALS },
     SalesOrderDate: { value: null, matchMode: FilterMatchMode.EQUALS },
-    SoldToParty: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    Material: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    SoldToParty: { value: null, matchMode: FilterMatchMode.EQUALS },
+    Material: { value: null, matchMode: FilterMatchMode.EQUALS },
     RequestedQuantity: { value: null, matchMode: FilterMatchMode.EQUALS },
     RequestedQuantityUnit: { value: null, matchMode: FilterMatchMode.EQUALS }
   });
@@ -51,21 +51,21 @@ const SalesDatatable = (props) => {
       <Column selectionMode="multiple" headerStyle={{ width: "4rem" }}></Column>
       <Column
         filter
-        filterPlaceholder="Search by PO"
+        filterPlaceholder="Search by Sales Order"
         sortable
         field="SalesOrder"
         header="Sales Order"
       ></Column>
       <Column
         filter
-        filterPlaceholder="Search by POItem"
+        filterPlaceholder="Search by Sales Order Item"
         sortable
         field="SalesOrderItem"
         header="Sales order item"
       ></Column>
       <Column
         filter
-        filterPlaceholder="Search by SalesOrderDate"
+        filterPlaceholder="Search by Sales Order Date"
         sortable
         field="SalesOrderDate"
         header="Sales order date"
