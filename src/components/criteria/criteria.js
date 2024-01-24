@@ -64,7 +64,7 @@ const Criteria = () => {
               RefineryCertID: eachBatch.RefineryCertID || '',
               origin: eachBatch.origin || '',
               quantity: eachBatch.quantity || '',
-              UoM: 'Tons',//eachbatchData.UoM,
+              UoM: eachbatchData.UoM,
               po: eachbatchData.PO || '',
               POdate:eachbatchData.POdate || '',
               POItem:eachbatchData.POItem || '',
