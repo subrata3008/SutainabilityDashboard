@@ -98,6 +98,7 @@ const DatatableComp = (props) => {
         filter
         filterPlaceholder="Search by Quantity"
         sortable
+        align='right'
         field="quantity"
         header="Quantity"
       ></Column>
