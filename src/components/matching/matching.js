@@ -29,11 +29,8 @@ const Matching = () => {
         yearValue +
         "&month=" +
         monthValue;
-    const InputCriteria = fetch(InputCriteriaUrl).then((response) =>
-      response.json()
-    );
-    const SalesOrder = fetch(SalesOrderUrl).then((response) => response.json());
-    //fetch(finalUrl)
+    const InputCriteria = fetch(InputCriteriaUrl).then((response) => response.json());
+    const SalesOrder = fetch(SalesOrderUrl).then((response) => response.json()); 
     Promise.all([InputCriteria, SalesOrder])
       .then(([InputCriteriaData, SalesOrderData]) => {
         let finalSalesData = SalesOrderData.records.map((eachSalesdata,indx)=>{
@@ -45,15 +42,14 @@ const Matching = () => {
           (eachdata) =>
             eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
-        if (InputCriteriaData.records.length > 0) {
+        let flag = 0;
+        if (dataWithBatch.length > 0) {
           let finalData = dataWithBatch.map((eachbatchData) => {
             return eachbatchData.batch.map((eachBatch,index) => {
+              flag++; 
               return {
-                id: index,
-                feedStockStype: !eachbatchData.FeedStockType
-                  ? ""
-                  : eachbatchData.FeedStockType,
-                //.length > 1 ? eachbatchData.FeedStockType.join(): eachbatchData.FeedStockType,
+                id: flag,
+                feedStockStype:  eachbatchData.FeedStockType || '',
                 BatchNo: eachBatch.BatchNo,
                 RefineryCertID: eachBatch.RefineryCertID,
                 origin: eachBatch.origin,
@@ -65,16 +61,15 @@ const Matching = () => {
                 carbonIntensity: eachBatch.carbonIntensity,
               };
             });
-          });
+          }); 
           setIsNodata(false);
+          console.log(finalData.flat(Infinity));
           setTableData(finalData.flat(Infinity));
           setSalesTableData(SalesOrderData.records);
         } else {
           setIsNodata(true);
         }
-        setIsLoading(false);
-        
-        console.log(salesTableData)
+        setIsLoading(false); 
       })
       .catch((error) => {
         console.error(error);
@@ -192,9 +187,9 @@ const Matching = () => {
       )}
       {tableData.length !== 0 && (
         <div className="table-container">
-          <DatatableComp tableData={tableData} isLoading={isLoading} />
+          <DatatableComp salesTableData={tableData} isLoading={isLoading} />
         </div>
-      )}
+       )} 
     </div>
     </>
   );
