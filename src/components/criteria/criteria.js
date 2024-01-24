@@ -48,8 +48,7 @@ const Criteria = () => {
     Promise.all([InputCriteria])
       .then((InputCriteriaData) => { 
         setSalesTableData([]);
-        setIsLoading(false);
-        console.log(InputCriteria);
+        setIsLoading(false); 
         let dataWithBatch = InputCriteriaData[0].records.filter((eachdata) =>
         eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
@@ -72,9 +71,7 @@ const Criteria = () => {
             };
           });
         });
-        setSalesTableData(finalData.flat(Infinity));
-        
-        console.log(salesTableData)
+        setSalesTableData(finalData.flat(Infinity)); 
       })
       .catch((error) => {
         console.error(error);

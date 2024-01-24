@@ -62,8 +62,7 @@ const Matching = () => {
               };
             });
           }); 
-          setIsNodata(false);
-          console.log(finalData.flat(Infinity));
+          setIsNodata(false); 
           setTableData(finalData.flat(Infinity));
           setSalesTableData(SalesOrderData.records);
         } else {

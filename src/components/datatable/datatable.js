@@ -5,8 +5,7 @@ import { Column } from "primereact/column";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
 
 const DatatableComp = (props) => {
-  const { salesTableData, isLoading } = props;
-  console.log(salesTableData);
+  const { salesTableData, isLoading } = props; 
   const [selectedDatas, setSelectedDatas] = useState(null);
   const [filters, setFilters] = useState({
     po: { value: null, matchMode: FilterMatchMode.EQUALS },
@@ -32,8 +31,7 @@ const DatatableComp = (props) => {
       filterDisplay="menu"
       removableSort 
       selection={selectedDatas}
-      onSelectionChange={(e) => {
-        console.log(e.value);
+      onSelectionChange={(e) => { 
         setSelectedDatas(e.value);
       }}
       dataKey="id"

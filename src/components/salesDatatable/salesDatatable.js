@@ -34,8 +34,7 @@ const SalesDatatable = (props) => {
       removableSort
       selectionMode={"checkbox"}
       selection={selectedDatas}
-      onSelectionChange={(e) => {
-        console.log(e.value);
+      onSelectionChange={(e) => { 
         setSelectedDatas(e.value);
       }}
       dataKey="id"
