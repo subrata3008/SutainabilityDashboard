@@ -69,7 +69,7 @@ const DatatableComp = (props) => {
         filter
         filterPlaceholder="Search by Certificate"
         sortable
-        field="CertID"
+        field="RefineryCertID"
         header="Certificate ID"
       ></Column>
       <Column

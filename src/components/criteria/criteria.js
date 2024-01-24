@@ -61,7 +61,7 @@ const Criteria = () => {
               id: flag,
               feedStockStype:  eachbatchData.FeedStockType || '',
               BatchNo: eachBatch.BatchNo || '',
-              CertID: eachBatch.CertID || '',
+              RefineryCertID: eachBatch.RefineryCertID || '',
               origin: eachBatch.origin || '',
               quantity: eachBatch.quantity || '',
               UoM: 'Tons',//eachbatchData.UoM,
