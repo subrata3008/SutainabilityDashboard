@@ -1,8 +1,8 @@
 import React, {  useState } from "react";
-import "../matching/matching.css";
-import DatatableComp from "../datatable/datatable";
+import "../matching/matching.css"; 
 import SalesDatatable from "../salesDatatable/salesDatatable";
 import ApiLoader from "../loader/loader";
+import MatchingSalesDatatable from "../matchingSalesDatatable/matchingSalesDatatable";
 
 const Matching = () => {
   const [monthValue, setMonthValue] = useState("");
@@ -10,6 +10,7 @@ const Matching = () => {
   const [tableData, setTableData] = useState([]);
   const [selectedSales, setselectedSales] = useState([]);
   const [salesTableData, setSalesTableData] = useState([]);  
+  const [selectedMatchingSales, setselectedMatchingSales] = useState([]);  
   const [isLoading, setIsLoading] = useState(false);
   const [isNodata, setIsNodata] = useState(false);
 
@@ -80,6 +81,29 @@ const Matching = () => {
    setIsLoading(true);
    const  {SalesOrder,Material} = selectedSales[0];
    fetch('https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf?salesordernumber=+'+ SalesOrder +'&product=+'+ Material)
+   .then(response=>response.json())
+   .then(finalResp=>{
+    setIsLoading(false);
+    alert(finalResp.message);
+   })
+   .catch(err=>{
+    console.log(err);
+   })
+  }
+
+
+  const manualMatching = () =>{
+    // console.log(selectedMatchingSales);
+    // console.log(selectedSales)
+    setIsLoading(true);
+    
+   const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    mode: "no-cors",
+    body: JSON.stringify(JSON.stringify({salesData:selectedSales,purchaseData:selectedMatchingSales}, null, 2)),
+  };
+    fetch('https://ip07sv5z51.execute-api.us-east-1.amazonaws.com/ManualBioMatching',requestOptions)
    .then(response=>response.json())
    .then(finalResp=>{
     setIsLoading(false);
@@ -170,11 +194,11 @@ const Matching = () => {
         <span className="saveBtn" onClick={bioMatchingFunc}>
           <i className="fa fa-magic" aria-hidden="true"></i> Auto
         </span>
-        <span className="saveBtn">
+        <span className="saveBtn"
+            onClick={manualMatching}>
           <i
             className="fa fa-hand-rock-o"
             aria-hidden="true"
-            onClick={() => callInputcriteria("manual")}
           ></i>{" "}
           Manual
         </span>
@@ -185,8 +209,11 @@ const Matching = () => {
         </div>
       )}
       {tableData.length !== 0 && (
-        <div className="table-container">
-          <DatatableComp salesTableData={tableData} isLoading={isLoading} />
+        <div className="table-container"> 
+          <MatchingSalesDatatable 
+          salesTableData={tableData} 
+          isLoading={isLoading} 
+          setselectedMatchingSales={setselectedMatchingSales}/>
         </div>
        )} 
     </div>

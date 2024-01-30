@@ -5,7 +5,7 @@ import { Column } from "primereact/column";
 import { FilterMatchMode } from "primereact/api";
 
 const SalesDatatable = (props) => {
-  const { salesTableData, isLoading,setselectedSales } = props; 
+  const { salesTableData, isLoading, setselectedSales } = props; 
   const [selectedDatas, setSelectedDatas] = useState(null); 
   const [filters, ] = useState({
     SalesOrder: { value: null, matchMode: FilterMatchMode.EQUALS },
@@ -35,6 +35,7 @@ const SalesDatatable = (props) => {
       selectionMode={"checkbox"}
       selection={selectedDatas}
       onSelectionChange={(e) => { 
+        console.log(e.value);
         setSelectedDatas(e.value);
       }}
       dataKey="id"
@@ -47,7 +48,7 @@ const SalesDatatable = (props) => {
         isLoading ? <div className="loader"></div> : "No data found"
       }
     >
-      <Column selectionMode="multiple" headerStyle={{ width: "4rem" }}></Column>
+      <Column selectionMode="single" headerStyle={{ width: "4rem" }}></Column>
       <Column
         filter
         filterPlaceholder="Search by Sales Order"
