@@ -111,6 +111,7 @@ const Matching = () => {
    })
    .catch(err=>{
     console.log(err);
+    setIsLoading(false);
    })
   }
  
