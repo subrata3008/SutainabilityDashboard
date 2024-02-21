@@ -60,7 +60,6 @@ const DatatableComp = (props) => {
         filter
         filterPlaceholder="Search by POdate"
         sortable
-        dataType="date"
         field="POdate"
         header="Purchase order date"
       ></Column>

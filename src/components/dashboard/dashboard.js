@@ -1,10 +1,10 @@
 import React, {  useState } from "react";
-import "../matching/matching.css"; 
+import "../dashboard/dashboard.css"; 
 import SalesDatatable from "../salesDatatable/salesDatatable";
 import ApiLoader from "../loader/loader";
 import MatchingSalesDatatable from "../matchingSalesDatatable/matchingSalesDatatable";
 
-const Matching = () => {
+const DashBoard = () => {
   const [monthValue, setMonthValue] = useState("");
   const [yearValue, setYearValue] = useState("");
   const [tableData, setTableData] = useState([]);
@@ -78,10 +78,8 @@ const Matching = () => {
 
 
   const bioMatchingFunc = () =>{
-   setIsLoading(true);  
-    debugger;
-
-   const  {SalesOrder,Material} = selectedSales;
+   setIsLoading(true);
+   const  {SalesOrder,Material} = selectedSales[0];
    fetch('https://jcdz88g56j.execute-api.us-east-1.amazonaws.com/SalesOrder_data_bioMatching_sf?salesordernumber=+'+ SalesOrder +'&product=+'+ Material)
    .then(response=>response.json())
    .then(finalResp=>{
@@ -90,7 +88,6 @@ const Matching = () => {
    })
    .catch(err=>{
     console.log(err);
-    setIsLoading(false);
    })
   }
 
@@ -225,4 +222,4 @@ const Matching = () => {
   );
 };
 
-export default Matching;
+export default DashBoard;
