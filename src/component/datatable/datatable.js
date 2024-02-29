@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "../datatable/datatable.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { FilterMatchMode, FilterOperator } from "primereact/api";
+import { FilterMatchMode,  } from "primereact/api";
 
 const DatatableComp = (props) => {
   const { salesTableData, isLoading } = props; 
   const [selectedDatas, setSelectedDatas] = useState(null);
-  const [filters, setFilters] = useState({
+  const [filters, ] = useState({
     po: { value: null, matchMode: FilterMatchMode.EQUALS },
     POItem: { value: null, matchMode: FilterMatchMode.EQUALS },
     POdate: { value: null, matchMode: FilterMatchMode.EQUALS },
