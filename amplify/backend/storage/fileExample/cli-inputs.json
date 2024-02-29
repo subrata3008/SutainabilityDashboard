@@ -1,0 +1,13 @@
+{
+  "resourceName": "fileExample",
+  "policyUUID": "02796694",
+  "bucketName": "gl-textract",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

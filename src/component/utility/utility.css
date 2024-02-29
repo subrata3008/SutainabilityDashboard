@@ -1,0 +1,66 @@
+.Main,label{
+  text-decoration: none;
+  color: #000;
+}
+
+.cartableData{
+  margin: auto;
+    min-width: 300px;
+    max-width: 50%;
+    border-collapse: collapse;color: #333;
+    border-radius: 0.4em; 
+    float: left;
+
+}
+.cartTable{
+  width: 100%;
+  background-color: #e7e7e7;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    margin-bottom: 20px;
+    -webkit-column-break-inside: avoid;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  .btnContainer{
+    width: 95%;
+    padding: 1%;
+  }
+  /* Force varying heights to simulate dynamic content */
+  .card:first-child {
+    height: 485px;
+  }
+  
+  .card:nth-child(2) {
+    height: auto;
+  }
+  
+  .card:nth-child(3) {
+    height: 265px;
+  }
+  
+ .podData-wrapper{  
+  display: flex;
+  padding: 3% 1%;
+  background: #e7e7e7;
+  width: 100%;
+ }
+ .podData-wrapper input {
+  border-width: 0px 0px 1px 0px;
+  outline: 0;
+  width: 20vw;
+  margin-right: 5%;
+  margin-left: 5%;
+  line-height: 4vh;
+}
+.podData-input-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.calculate{
+  margin-left: 3vw
+}
