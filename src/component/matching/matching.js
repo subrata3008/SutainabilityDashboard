@@ -41,6 +41,13 @@ const Matching = () => {
     const SalesOrder = fetch(SalesOrderUrl).then((response) => response.json());
     Promise.all([InputCriteria, SalesOrder])
       .then(([InputCriteriaData, SalesOrderData]) => {
+        console.log(InputCriteria);
+        console.log(SalesOrderData);
+        //debugger
+        if(SalesOrderData.message){
+          alert(SalesOrderData.message);          
+          setIsLoading(false);
+        }else{
         let finalSalesData = SalesOrderData.records.map(
           (eachSalesdata, indx) => {
             eachSalesdata.id = indx;
@@ -48,6 +55,7 @@ const Matching = () => {
           }
         );
         setSalesTableData(finalSalesData);
+        }
         let dataWithBatch = InputCriteriaData.records.filter(
           (eachdata) =>
             eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")

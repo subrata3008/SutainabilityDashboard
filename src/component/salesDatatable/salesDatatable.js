@@ -8,13 +8,15 @@ const SalesDatatable = (props) => {
   const { salesTableData, isLoading, setselectedSales } = props; 
   const [selectedDatas, setSelectedDatas] = useState(null); 
   const [filters, ] = useState({
-    SalesOrder: { value: null, matchMode: FilterMatchMode.EQUALS },
-    SalesOrderItem: { value: null, matchMode: FilterMatchMode.EQUALS },
-    SalesOrderDate: { value: null, matchMode: FilterMatchMode.EQUALS },
-    SoldToParty: { value: null, matchMode: FilterMatchMode.EQUALS },
-    Material: { value: null, matchMode: FilterMatchMode.EQUALS },
-    RequestedQuantity: { value: null, matchMode: FilterMatchMode.EQUALS },
-    RequestedQuantityUnit: { value: null, matchMode: FilterMatchMode.EQUALS }
+    SalesOrder: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    SalesOrderItem: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    SalesOrderDate: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    SoldToParty: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    Material: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    RequestedQuantity: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    ProductDescription: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    CustomerName: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    RequestedQuantityUnit: { value: null, matchMode: FilterMatchMode.CONTAINS }
   });
 
   
