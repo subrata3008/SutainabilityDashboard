@@ -25,14 +25,19 @@ const Tracking = () => {
     ); 
     Promise.all([InputCriteria])
       .then(([InputCriteriaData]) => {
-        let finalSalesData = InputCriteriaData.records.map(
-          (eachSalesdata, indx) => {
-            eachSalesdata.id = indx;
-            return eachSalesdata;
-          }
-        );
-        setTtrackTableData(finalSalesData); 
-        setIsLoading(false);
+        if(InputCriteriaData.message){
+          alert(InputCriteriaData.message);
+          setIsLoading(false);
+        }else{
+          let finalSalesData = InputCriteriaData.records.map(
+            (eachSalesdata, indx) => {
+              eachSalesdata.id = indx;
+              return eachSalesdata;
+            }
+          );
+          setTtrackTableData(finalSalesData);        
+          setIsLoading(false); 
+        }
       })
       .catch((error) => {
         console.error(error);
