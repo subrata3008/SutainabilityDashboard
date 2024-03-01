@@ -5,8 +5,9 @@ import { Column } from "primereact/column";
 import { FilterMatchMode } from "primereact/api";
 
 const TrackingDatatable = (props) => {
-  const { salesTableData, isLoading, setselectedSales } = props; 
-  const [selectedDatas, setSelectedDatas] = useState(null); 
+  const { trackTableData, isLoading, setselectedSales } = props; 
+  console.log(trackTableData)
+  //const [selectedDatas, setSelectedDatas] = useState(null); 
   const [filters, ] = useState({
     SalesOrder: { value: null, matchMode: FilterMatchMode.EQUALS },
     SalesOrderItem: { value: null, matchMode: FilterMatchMode.EQUALS },
@@ -18,13 +19,13 @@ const TrackingDatatable = (props) => {
   });
 
   
-  useEffect(() => { 
-    setselectedSales(selectedDatas);
-  }, [setselectedSales, selectedDatas]);
+  // useEffect(() => { 
+  //   setselectedSales(selectedDatas);
+  // }, [setselectedSales, selectedDatas]);
 
   return (
     <DataTable
-      value={salesTableData}
+      value={trackTableData}
       stripedRows
       scrollable
       scrollHeight="400px"
@@ -33,11 +34,11 @@ const TrackingDatatable = (props) => {
       filterDisplay="menu"
       removableSort
       selectionMode={"checkbox"}
-      selection={selectedDatas}
-      onSelectionChange={(e) => { 
-        console.log(e.value);
-        setSelectedDatas(e.value);
-      }}
+      //selection={selectedDatas}
+      // onSelectionChange={(e) => { 
+      //   console.log(e.value);
+      //   setSelectedDatas(e.value);
+      // }}
       dataKey="id"
       tableStyle={{
         minWidth: "40rem",
@@ -68,7 +69,7 @@ const TrackingDatatable = (props) => {
         filter
         filterPlaceholder="Search by Volume"
         sortable
-        field="Volume"
+        field="RequestedQuantity"
         header="Volume"
       ></Column>
       <Column
@@ -83,7 +84,7 @@ const TrackingDatatable = (props) => {
         filterPlaceholder="Search by Purchase order number"
         sortable
         align="right"
-        field="Purchase"
+        field="PO"
         header="Purchase"
       ></Column>
       <Column
@@ -104,7 +105,7 @@ const TrackingDatatable = (props) => {
         filter
         filterPlaceholder="Search by Userid"
         sortable
-        field="Userid"
+        field="MatchedByUser"
         header="Userid"
       ></Column>
     </DataTable>
