@@ -9,13 +9,17 @@ const TrackingDatatable = (props) => {
   console.log(trackTableData)
   //const [selectedDatas, setSelectedDatas] = useState(null); 
   const [filters, ] = useState({
-    SalesOrder: { value: null, matchMode: FilterMatchMode.EQUALS },
-    SalesOrderItem: { value: null, matchMode: FilterMatchMode.EQUALS },
-    SalesOrderDate: { value: null, matchMode: FilterMatchMode.EQUALS },
-    SoldToParty: { value: null, matchMode: FilterMatchMode.EQUALS },
-    Material: { value: null, matchMode: FilterMatchMode.EQUALS },
-    RequestedQuantity: { value: null, matchMode: FilterMatchMode.EQUALS },
-    RequestedQuantityUnit: { value: null, matchMode: FilterMatchMode.EQUALS }
+    SalesOrder: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    SalesOrderItem: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    SalesOrderDate: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    SoldToParty: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    Material: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    RequestedQuantity: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    RequestedQuantityUnit: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    Uom: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    PO: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    TotalCI: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    MatchedByUser: { value: null, matchMode: FilterMatchMode.CONTAINS }
   });
 
   
