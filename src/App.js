@@ -14,6 +14,7 @@ import { Button, withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
  
 import awsExports from './aws-exports';
+import Tracking from './component/tracking/tracking';
 Amplify.configure(awsExports);
 
 function App({ signOut, user }) {
@@ -63,6 +64,16 @@ function App({ signOut, user }) {
                       Matching
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink
+                      to="/tracking"
+                      className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active" : ""
+                      }
+                    >
+                      Tracking
+                    </NavLink>
+                  </li>
                 </ul>
               </li>
               <li className="sidenav__list-item">
@@ -95,6 +106,7 @@ function App({ signOut, user }) {
         <Routes>
           <Route exact path="/" element={<Criteria />}></Route>
           <Route exact path="/matching" element={<Matching />}></Route>
+          <Route exact path="/tracking" element={<Tracking />}></Route>
           <Route exact path="/utility" element={<Utility />}></Route>
         </Routes>
       </div> 
