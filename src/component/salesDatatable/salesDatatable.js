@@ -72,10 +72,10 @@ const SalesDatatable = (props) => {
       ></Column>
       <Column
         filter
-        filterPlaceholder="Search by Customer number"
+        filterPlaceholder="Search by Customer Name"
         sortable
-        field="SoldToParty"
-        header="Customer number"
+        field="CustomerName"
+        header="Customer name"
       ></Column>
       <Column
         filter

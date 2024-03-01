@@ -51,9 +51,10 @@ const Criteria = () => {
         let dataWithBatch = InputCriteriaData[0].records.filter((eachdata) =>
         eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
-        let flag = 0;
+        let flag = 0; 
         let finalData = dataWithBatch.map((eachbatchData,indexOuter) => {
           return eachbatchData.batch.map((eachBatch,index) => {
+           // debugger
             flag++; 
             return {
               id: flag,
@@ -61,7 +62,7 @@ const Criteria = () => {
               BatchNo: eachBatch.BatchNo || '',
               RefineryCertID: eachBatch.RefineryCertID || '',
               origin: eachBatch.origin || '',
-              quantity: eachBatch.quantity || '',
+              quantity: eachbatchData.LoadedQuantity || '',
               UoM: eachbatchData.UoM,
               po: eachbatchData.PO || '',
               POdate:eachbatchData.POdate || '',
