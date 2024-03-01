@@ -70,6 +70,7 @@ const TrackingDatatable = (props) => {
         filterPlaceholder="Search by Volume"
         sortable
         field="RequestedQuantity"
+        align="right"
         header="Volume"
       ></Column>
       <Column
@@ -93,14 +94,7 @@ const TrackingDatatable = (props) => {
         sortable
         field="TotalCI"
         header="Total CI"
-      ></Column>
-      <Column
-        filter
-        filterPlaceholder="Search by Savings %"
-        sortable
-        field="savings"
-        header="Savings %"
-      ></Column>
+      ></Column> 
       <Column
         filter
         filterPlaceholder="Search by Userid"
