@@ -13,12 +13,13 @@ const TrackingDatatable = (props) => {
     SalesOrderItem: { value: null, matchMode: FilterMatchMode.CONTAINS },
     SalesOrderDate: { value: null, matchMode: FilterMatchMode.CONTAINS },
     SoldToParty: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    CustomerName: { value: null, matchMode: FilterMatchMode.CONTAINS },
     Material: { value: null, matchMode: FilterMatchMode.CONTAINS },
     RequestedQuantity: { value: null, matchMode: FilterMatchMode.CONTAINS },
     RequestedQuantityUnit: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    Uom: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    OrderQuantityUnit: { value: null, matchMode: FilterMatchMode.CONTAINS },
     PO: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    TotalCI: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    totalGHG: { value: null, matchMode: FilterMatchMode.CONTAINS },
     MatchedByUser: { value: null, matchMode: FilterMatchMode.CONTAINS }
   });
 
@@ -63,6 +64,13 @@ const TrackingDatatable = (props) => {
       ></Column> 
       <Column
         filter
+        filterPlaceholder="Search by Customer Name"
+        sortable
+        field="CustomerName" 
+        header="Customer Name"
+      ></Column>
+      <Column
+        filter
         filterPlaceholder="Search by Material"
         sortable
         field="Material"
@@ -81,7 +89,7 @@ const TrackingDatatable = (props) => {
         filter
         filterPlaceholder="Search by Units"
         sortable
-        field="Uom"
+        field="OrderQuantityUnit"
         header="Units"
       ></Column>
       <Column
@@ -96,7 +104,7 @@ const TrackingDatatable = (props) => {
         filter
         filterPlaceholder="Search by Total Cl"
         sortable
-        field="TotalCI"
+        field="totalGHG"
         header="Total CI"
       ></Column> 
       <Column

@@ -17,6 +17,7 @@
   float: left;
     padding: 0% 1%;
     font-size: 12px;
+    width: 35vw;
 } 
 .bottom-block{
   display: flex;
