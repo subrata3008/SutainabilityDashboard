@@ -71,7 +71,7 @@ const TrackingDatatable = (props) => {
       ></Column>
       <Column
         filter
-        filterPlaceholder="Search by Product Description"
+        filterPlaceholder="Search by Material"
         sortable
         field="ProductDescription" 
         header="Material"
