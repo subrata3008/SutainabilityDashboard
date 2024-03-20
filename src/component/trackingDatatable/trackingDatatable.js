@@ -14,7 +14,7 @@ const TrackingDatatable = (props) => {
     SalesOrderDate: { value: null, matchMode: FilterMatchMode.CONTAINS },
     SoldToParty: { value: null, matchMode: FilterMatchMode.CONTAINS },
     CustomerName: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    Material: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    ProductDescription: { value: null, matchMode: FilterMatchMode.CONTAINS },
     RequestedQuantity: { value: null, matchMode: FilterMatchMode.CONTAINS },
     RequestedQuantityUnit: { value: null, matchMode: FilterMatchMode.CONTAINS },
     OrderQuantityUnit: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -71,19 +71,19 @@ const TrackingDatatable = (props) => {
       ></Column>
       <Column
         filter
-        filterPlaceholder="Search by Material"
+        filterPlaceholder="Search by Product Description"
         sortable
-        field="Material"
+        field="ProductDescription"
         align="right"
         header="Material"
       ></Column>
       <Column
         filter
-        filterPlaceholder="Search by Volume"
+        filterPlaceholder="Search by Quantity"
         sortable
         field="RequestedQuantity"
         align="right"
-        header="Volume"
+        header="Quantity"
       ></Column>
       <Column
         filter
