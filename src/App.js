@@ -26,7 +26,7 @@ function App({ signOut, user }) {
         <div className="App">
         <div className="grid-container">
         <header className="header">
-          <div className="header_main">
+          {/* <div className="header_main">
             <img
               src={logo}
               className="logo"
@@ -34,10 +34,20 @@ function App({ signOut, user }) {
               width="20"
               alt="logo"
             />
-          </div>
-          <div className="header__avatar"></div>
+          </div>  */}
           <div className="navBar">
             <ul className="sidenav__list">
+              <li> 
+              <div className="header_main">
+            <img
+              src={logo}
+              className="logo"
+              height="20"
+              width="20"
+              alt="logo"
+            />
+          </div> 
+                </li>
               <li className="sidenav__list-item">
                 <i className="fa fa-tasks" /> Dashboard
               </li>
@@ -99,8 +109,7 @@ function App({ signOut, user }) {
               >Sign out</Button> 
             </ul>
            
-          </div>
-          <div className="header__avatar"></div>
+          </div> 
         </header>
 
         <Routes>

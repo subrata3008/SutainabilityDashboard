@@ -11,9 +11,12 @@ body {
 }
 
 .signOut{
-  margin-left: 50%;
-    height: 6vh;
+  margin-left: 44%;
+    height: 5vh;
     margin-top: 2vh;
+    color: #fff;
+    background: #006e00;
+    border: 1px solid black;
 }
 /* Assign grid instructions to our parent grid container, mobile-first (hide the sidenav) */
 .grid-container {
@@ -45,10 +48,8 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   word-wrap: break-word;
-}
-th,td{
-  padding: 2%;
-}
+} 
+
 .p-datatable-table{
   border-spacing: 20px !important;
   border: 1px;
@@ -113,12 +114,12 @@ th,td{
   padding: 0; 
   margin: 0;
   list-style-type: none; 
-  background: #CAFAA6;
+  background: #67bc2a;
 }
 
 .sidenav__list-item {
   padding: 15px 11px 15px 40px;
-  color: #000;
+  color: #fff;
 }
 
 .sidenav__list-item:hover {
@@ -128,7 +129,7 @@ th,td{
 
 .main {
   grid-area: main;
-  color: #000;
+  color: #fff;
   margin-top: 10vh;
 
 }
@@ -192,9 +193,8 @@ th,td{
     background-color: aliceblue;
     width: 45px;
     border-radius: 50%;
-    margin-left: 2%;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    margin-left: 15%;
+    margin-top: 15%;
   }
 
   .sidenav {
