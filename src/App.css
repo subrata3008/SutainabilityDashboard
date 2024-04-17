@@ -116,6 +116,7 @@ table, th, td {
   margin: 0;
   list-style-type: none; 
   background: #67bc2a;
+  align-items: center;
 }
 
 .sidenav__list-item {
