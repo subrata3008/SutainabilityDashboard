@@ -72,9 +72,9 @@ table, th, td {
   padding: 0;  
   background-color: #67BC2A;
 }
-.p-datatable {
+/* .p-datatable {
   width: 95vw !important;
-}
+} */
 /* Make room for the menu icon on mobile */
 .header_main { 
   background-color: #67BC2A;
