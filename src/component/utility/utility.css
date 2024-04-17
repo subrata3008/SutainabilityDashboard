@@ -27,7 +27,7 @@
     box-sizing: border-box;
   }
   .btnContainer{
-    width: 95%;
+    width: 100%;
     padding: 1%;
   }
   /* Force varying heights to simulate dynamic content */

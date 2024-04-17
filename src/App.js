@@ -100,6 +100,7 @@ function App({ signOut, user }) {
                 <i className="fa fa-cogs" /> Utility
                 </NavLink>
               </li> 
+              <div className='signOutBtn-wrapper'>                
               <Button onClick={signOut}
               type="submit"
               className='signOut'
@@ -107,6 +108,7 @@ function App({ signOut, user }) {
               size="small"
               variation="waring"
               >Sign out</Button> 
+              </div>
             </ul>
            
           </div> 
