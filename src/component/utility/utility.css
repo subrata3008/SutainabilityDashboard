@@ -2,7 +2,9 @@
   text-decoration: none;
   color: #fff;
 }
-
+.calLabel{
+  color: #000;
+}
 .cartableData{
   margin: auto;
     min-width: 300px;

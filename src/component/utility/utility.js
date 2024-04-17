@@ -40,7 +40,7 @@ const Utility = () => {
     <ApiLoader isLoading={isLoading}/>
     <div className="card">
       <div className="podData-wrapper">
-        <label>EIS Transport Carbon Calculator: </label>
+        <label className="calLabel">EIS Transport Carbon Calculator: </label>
         <div className="podData-input-wrapper">
        <input type="text" value={podata} onChange={updateInputValue}/>
        {!isValidPodata && <span style={{color:'red'}}>Please enter valid Purchase order data</span>}

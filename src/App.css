@@ -252,7 +252,7 @@ table, th, td {
 }
 
 .active{
-  color: #67BC2A !important;
+  color: #0e0e0e !important;
 }
 .tooltip .tooltiptext::after {
   content: "";
