@@ -15,12 +15,15 @@ import '@aws-amplify/ui-react/styles.css';
  
 import awsExports from './aws-exports';
 import Tracking from './component/tracking/tracking';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 Amplify.configure(awsExports);
-
 function App({ signOut, user }) {
- 
+  const { route } = useAuthenticator(context => [context.route]);
 
-  return (
+  // Use the value of route to decide which page to render
+  //return route === 'authenticated' ? <home /> : <Authenticator />;
+
+  return route === 'authenticated' && (
     <div className="App"> 
       <Router>
         <div className="App">
@@ -124,6 +127,7 @@ function App({ signOut, user }) {
         </div>
     </Router> 
     </div>
+    
   );
 }
 
