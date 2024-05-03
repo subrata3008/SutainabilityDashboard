@@ -238,8 +238,8 @@ table, th, td {
   left: -10px !important;
 }
 .tooltiptext li{   
-   width: 100px;
-    border-right: 1px solid gray;
+  border-right: 1px solid gray;
+  padding-right: 2%;
 }
 .tooltiptext li :last-child{    
    border: 0px;

@@ -16,6 +16,7 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 import Tracking from './component/tracking/tracking';
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import BusinessRuleGenerator from './component/businessRuleGenerator/businessRuleGenerator';
 Amplify.configure(awsExports);
 function App({ signOut, user }) {
   const { route } = useAuthenticator(context => [context.route]);
@@ -93,15 +94,30 @@ function App({ signOut, user }) {
                
                 <i className="fa fa-bookmark-o" /> Credit
               </li>
-              <li className="sidenav__list-item"> 
-              <NavLink
+              <li className="sidenav__list-item tooltip">  
+                <i className="fa fa-cogs" /> Utility 
+                <ul className="tooltiptext">
+                  <li>
+                    <NavLink
                       to="/utility"
                       className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active Main" : "Main"
+                        isPending ? "pending" : isActive ? "active" : ""
                       }
                     >
-                <i className="fa fa-cogs" /> Utility
-                </NavLink>
+                      Calculator
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/brg"
+                      className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active" : ""
+                      }
+                    >
+                      Business Rules Generator
+                    </NavLink>
+                  </li> 
+                </ul>
               </li> 
               <div className='signOutBtn-wrapper'>                
               <Button onClick={signOut}
@@ -122,6 +138,7 @@ function App({ signOut, user }) {
           <Route exact path="/matching" element={<Matching />}></Route>
           <Route exact path="/tracking" element={<Tracking />}></Route>
           <Route exact path="/utility" element={<Utility />}></Route>
+          <Route exact path="/brg" element={<BusinessRuleGenerator />}></Route>
         </Routes>
       </div> 
         </div>
