@@ -12,7 +12,7 @@ const DatatableComp = (props) => {
     POItem: { value: null, matchMode: FilterMatchMode.EQUALS },
     POdate: { value: null, matchMode: FilterMatchMode.EQUALS },
     BatchNo: { value: null, matchMode: FilterMatchMode.EQUALS },
-    CertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    RefineryCertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
     feedStockStype: { value: null, matchMode: FilterMatchMode.CONTAINS },
     origin: { value: null, matchMode: FilterMatchMode.EQUALS },
     carbonIntensity: { value: null, matchMode: FilterMatchMode.EQUALS },
