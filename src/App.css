@@ -239,7 +239,10 @@ table, th, td {
 }
 .tooltiptext li{   
   border-right: 1px solid gray;
-  padding-right: 2%;
+  padding-right: 5%;
+}
+.tooltiptext li:last-child{
+  border-right: 0;
 }
 .tooltiptext li :last-child{    
    border: 0px;
