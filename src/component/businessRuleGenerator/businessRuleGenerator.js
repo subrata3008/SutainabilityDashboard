@@ -17,19 +17,29 @@ const BusinessRuleGenerator = () => {
     setPodata(evt.target.value);
   }
 
-  const generateRules = () =>{
+  const generateRules = () =>{ 
     if(podata){
       setIsLoading(true);
-      fetch('https://d497jytpn1.execute-api.us-east-1.amazonaws.com/EIS_calculation?PO='+podata)
+      const requestOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        mode: "no-cors", 
+      };
+      fetch('https://vxkr89zy2h.execute-api.us-east-1.amazonaws.com/dev/?prompt='+podata,requestOptions)
       .then(data => {
-      return data.json();
+        return data.text()
       })
-      .then(post => {
-        setIsLoading(false);
-      setCarbonData(post.records);
+      .then((data) => {
+        //resolve(data ? JSON.parse(data) : {})
+        
+        setIsLoading(false); 
       setIsValidPodata(true)
-      console.log(carbonData)
-      });
+       alert("Query submitted successfully");
+       setPodata('');
+      })
+      .catch((error) => {
+        console.log(error)
+      }) 
     }else{
       setIsValidPodata(false)
     }
