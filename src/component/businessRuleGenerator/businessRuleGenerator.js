@@ -4,7 +4,7 @@ import ApiLoader from "../loader/loader";
 
 const BusinessRuleGenerator = () => {
   const [podata, setPodata] = useState('');
-  const [carbonData, setCarbonData] = useState('');
+  const [ansData, setAnsData] = useState('');
   
   const [isLoading, setIsLoading] = useState(false);
   const [isValidPodata, setIsValidPodata] = useState(true);  
@@ -25,25 +25,53 @@ const BusinessRuleGenerator = () => {
         headers: { "Content-Type": "application/json" },
         mode: "no-cors", 
       };
-      fetch('https://vxkr89zy2h.execute-api.us-east-1.amazonaws.com/dev/?prompt='+podata,requestOptions)
+      const requestPostOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }, 
+        //mode: "no-cors",
+        body: JSON.stringify(
+          JSON.stringify(
+            {
+              prompt: podata,
+            },
+            null,
+            2
+          )
+        ),
+      };
+      const brgUrl = "https://kttaoqm5o8.execute-api.us-east-1.amazonaws.com/genAI-BusinessRules-updater";
+      //fetch('https://vxkr89zy2h.execute-api.us-east-1.amazonaws.com/dev/?prompt='+podata,
+      fetch( brgUrl, requestPostOptions)
       .then(data => {
-        return data.text()
+        return data.json()
       })
-      .then((data) => {
-        //resolve(data ? JSON.parse(data) : {})
-        
+      .then((data) => { 
+        setAnsData(data);
         setIsLoading(false); 
-      setIsValidPodata(true)
-       alert("Query submitted successfully");
-       setPodata('');
+        setIsValidPodata(true)
+        alert("Query submitted successfully");
+        setPodata('');
+        
+        console.log(ansData);
       })
       .catch((error) => {
         console.log(error)
+        setIsLoading(false); 
       }) 
     }else{
       setIsValidPodata(false)
     }
   } 
+
+  const getBusinessResponse = (resp) =>{ 
+    const finalResp =  resp.map(eachData => 
+      <tr> 
+      <td>{eachData["Petroleum products"]}</td>
+        <td>{eachData.Status}</td>
+      </tr>
+    )
+    return finalResp;
+  }
 
   return (
     <> 
@@ -57,38 +85,15 @@ const BusinessRuleGenerator = () => {
         </div>
        <button className="saveBtn generate" onClick={generateRules}>Generate Business Rules</button>
       </div>
-       { carbonData && 
+       { ansData.length > 0 && 
        <div className="cartTable">
-       <table className="cartableData">
-        <tbody>
-        <tr>
-          <td>CH4</td>
-          <td>{carbonData.CH4}</td>
-        </tr>
-        <tr>
-          <td>N2O</td>
-          <td>{carbonData.N2O}</td>
-        </tr>
-        <tr>
-          <td>Fuel C02</td>
-          <td>{carbonData.fossilFuelCO2+' gC02e/MT'}</td>
-        </tr>
-        <tr>
-          <td>Biogenic C02</td>
-          <td>{carbonData.biogenicCO2}</td>
-        </tr>
-        <tr>
-          <td>C02e</td>
-          <td>{carbonData.CO2e+'gCO2e/MT'}</td>
-        </tr> 
-        <tr>
-          <td>Quantity</td>
-          <td>{carbonData.Quantity}</td>
-        </tr>
-        <tr>
-          <td>Description</td>
-          <td>{carbonData.description}</td>
-        </tr>
+       <table className="cartableData"> 
+        <thead>
+          <th>Petroleum products</th>
+          <th>Status</th>
+        </thead> 
+        <tbody>       
+        {getBusinessResponse(ansData)} 
         </tbody>
        </table>
        </div>

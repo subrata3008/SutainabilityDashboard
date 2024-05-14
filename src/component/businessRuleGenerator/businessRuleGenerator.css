@@ -9,14 +9,15 @@
   margin: auto;
     min-width: 300px;
     max-width: 50%;
-    border-collapse: collapse;color: #333;
+    border-collapse: collapse;
+    color: #333;
     border-radius: 0.4em; 
     float: left;
 
 }
 .cartTable{
   width: 100%;
-  background-color: #e7e7e7;
+  background-color: #fff;
 }
 .card {
     display: flex;
@@ -70,7 +71,7 @@
 .generate{
   margin-left: 0%;
     height: 30px;
-    width: 155px;
+    width: 165px;
     margin-top: 2%;
     text-transform: none;
 }
