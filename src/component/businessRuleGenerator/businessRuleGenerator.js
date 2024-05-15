@@ -4,6 +4,7 @@ import ApiLoader from "../loader/loader";
 
 const BusinessRuleGenerator = () => {
   const [podata, setPodata] = useState('');
+  const [title, setTitle] = useState('');
   const [ansData, setAnsData] = useState('');
   
   const [isLoading, setIsLoading] = useState(false);
@@ -50,9 +51,7 @@ const BusinessRuleGenerator = () => {
         setIsLoading(false); 
         setIsValidPodata(true)
         alert("Query submitted successfully");
-        setPodata('');
-        
-        console.log(ansData);
+        setPodata(''); 
       })
       .catch((error) => {
         console.log(error)
@@ -62,11 +61,18 @@ const BusinessRuleGenerator = () => {
       setIsValidPodata(false)
     }
   } 
+  const getHeaders = (resp) => { 
+     return ( 
+     <thead>
+     <th>{ Object.keys(resp[0]).filter(eachkey=> eachkey.toUpperCase() !=='STATUS')[0] }</th>
+     <th>Status</th>
+     </thead>)
+  }
 
-  const getBusinessResponse = (resp) =>{ 
+  const getBusinessResponse = (resp) =>{   
     const finalResp =  resp.map(eachData => 
       <tr> 
-      <td>{eachData["Petroleum products"]}</td>
+      <td>{eachData[Object.keys(resp[0]).filter(eachkey=> eachkey.toUpperCase() !=='STATUS')[0]]}</td>
         <td>{eachData.Status}</td>
       </tr>
     )
@@ -88,10 +94,10 @@ const BusinessRuleGenerator = () => {
        { ansData.length > 0 && 
        <div className="cartTable">
        <table className="cartableData"> 
-        <thead>
-          <th>Petroleum products</th>
-          <th>Status</th>
-        </thead> 
+        
+        
+        {getHeaders(ansData)}
+         
         <tbody>       
         {getBusinessResponse(ansData)} 
         </tbody>
