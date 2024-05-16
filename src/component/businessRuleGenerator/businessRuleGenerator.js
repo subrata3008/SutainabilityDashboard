@@ -101,7 +101,7 @@ const BusinessRuleGenerator = () => {
           debugger
           console.log(data);
           setIsLoading(false);
-          alert(`Query {$status}ed successfully`);
+          alert(`Query ${status}ed successfully`);
         })
         .catch((error) => {
           setIsLoading(false);
