@@ -119,7 +119,7 @@ const BusinessRuleGenerator = () => {
   const getHeaders = (resp) => {
     return (
       <thead>
-        <th>
+        <th style={{"textTransform": 'capitalize'}}>
           {
             Object.keys(resp[0]).filter(
               (eachkey) => eachkey.toUpperCase() !== "STATUS"
