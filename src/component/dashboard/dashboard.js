@@ -76,7 +76,9 @@ const DashBoard = () => {
       });
   };
 
-
+  /**
+   * Bio matching function
+   */
   const bioMatchingFunc = () =>{
    setIsLoading(true);
    const  {SalesOrder,Material} = selectedSales[0];
@@ -92,11 +94,11 @@ const DashBoard = () => {
   }
 
 
-  const manualMatching = () =>{
-    // console.log(selectedMatchingSales);
-    // console.log(selectedSales)
-    setIsLoading(true);
-    
+  /**
+   * Manual matching function
+   */
+  const manualMatching = () =>{ 
+    setIsLoading(true); 
    const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },

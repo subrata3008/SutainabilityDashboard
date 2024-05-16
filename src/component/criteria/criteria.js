@@ -22,6 +22,11 @@ const Criteria = () => {
     });
   };
 
+  /**
+   * Save table data as excel method
+   * @param {*} buffer 
+   * @param {*} fileName 
+   */
   const saveAsExcelFile = (buffer, fileName) => {
     import("file-saver").then((module) => {
       if (module && module.default) {

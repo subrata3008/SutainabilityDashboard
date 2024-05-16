@@ -15,9 +15,16 @@
     float: left;
 
 }
+.btnHolder{
+  padding-bottom: 2%;
+    width: 100%;
+    display: flex;
+    padding-left: 1%;
+}
 .cartTable{
   width: 100%;
   background-color: #fff;
+  padding-left: 1%;
 }
 .card {
     display: flex;
@@ -50,7 +57,7 @@
   }
  .generateData-wrapper{  
   display: flex;
-  padding: 3% 1%;
+  padding: 3% 1% 0% 1%;
   /* background: #e7e7e7; */
   width: 100%;
   flex-flow: column;
