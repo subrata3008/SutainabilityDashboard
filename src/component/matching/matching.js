@@ -16,9 +16,9 @@ const Matching = () => {
   const items = { ...localStorage };
   const loggedInuserName = JSON.parse(items[Object.keys(items)[1]])
     .UserAttributes[2].Value;
-    console.log(JSON.parse(items[Object.keys(items)[1]])
-    .UserAttributes);
-  console.log(loggedInuserName);
+  //   console.log(JSON.parse(items[Object.keys(items)[1]])
+  //   .UserAttributes);
+  // console.log(loggedInuserName);
   const callInputcriteria = (type) => {
     setTableData([]);
     setSalesTableData([]);
@@ -62,8 +62,9 @@ const Matching = () => {
         );
         let flag = 0;
         if (dataWithBatch.length > 0) {
-          let finalData = dataWithBatch.map((eachbatchData) => {
+          let finalData = dataWithBatch.map((eachbatchData,indx) => {
             return eachbatchData.batch.map((eachBatch, index) => {
+              console.log(dataWithBatch);
               flag++;
               return {
                 id: flag,
@@ -71,7 +72,7 @@ const Matching = () => {
                 BatchNo: eachBatch.BatchNo,
                 RefineryCertID: eachBatch.RefineryCertID,
                 origin: eachBatch.origin,
-                quantity: eachBatch.quantity,
+                quantity: dataWithBatch[indx].LoadedQuantity,
                 UoM: eachbatchData.UoM,
                 po: eachbatchData.PO,
                 POdate: eachbatchData.POdate,
