@@ -6,6 +6,8 @@ const BusinessRuleGenerator = () => {
   const [podata, setPodata] = useState("");
   const [title, setTitle] = useState("");
   const [ansData, setAnsData] = useState("");
+  const [kbaseData, setKbaseData] = useState("");
+  
 
   const [isLoading, setIsLoading] = useState(false);
   const [isValidPodata, setIsValidPodata] = useState(true);
@@ -42,12 +44,14 @@ const BusinessRuleGenerator = () => {
         "https://kttaoqm5o8.execute-api.us-east-1.amazonaws.com/genAI-BusinessRules-updater";
       fetch(brgUrl, requestPostOptions)
         .then((data) => {
+         
           return data.json();
         })
         .then((data) => {
-          setAnsData(data);
+          setAnsData(JSON.parse(data.answer));
+          setKbaseData((data.kbase));
           setIsLoading(false);
-          setIsValidPodata(true);
+          setIsValidPodata(true); 
           alert("Query submitted successfully");
           //setPodata("");
         })
@@ -136,7 +140,7 @@ const BusinessRuleGenerator = () => {
    * @param {*} resp
    * @returns
    */
-  const getBusinessResponse = (resp) => {
+  const getBusinessResponse = (resp) => { 
     const finalResp = resp.map((eachData) => (
       <tr>
         <td>
@@ -178,6 +182,7 @@ const BusinessRuleGenerator = () => {
           <button className="saveBtn generate" onClick={generateRules}>
             Generate Business Rules
           </button>
+          {kbaseData && <p className="kbaseText">{kbaseData}</p>}
         </div>
         {ansData.length > 0 && (
           <>

@@ -5,6 +5,11 @@
 .calLabel{
   color: #000;
 }
+.kbaseText{ 
+  text-indent: 20vw;
+  text-align: justify;
+  letter-spacing: .5px;
+}
 .cartableData{
   margin: auto;
     min-width: 300px;
