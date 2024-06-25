@@ -3,10 +3,8 @@ import "./businessRuleGenerator.css";
 import ApiLoader from "../loader/loader";
 
 const BusinessRuleGenerator = () => {
-  const [podata, setPodata] = useState("");
-  const [title, setTitle] = useState("");
-  const [ansData, setAnsData] = useState("");
-  const [kbaseData, setKbaseData] = useState("");
+  const [podata, setPodata] = useState(""); 
+  const [ansData, setAnsData] = useState(""); 
   
 
   const [isLoading, setIsLoading] = useState(false);
@@ -48,8 +46,7 @@ const BusinessRuleGenerator = () => {
           return data.json();
         })
         .then((data) => {
-          setAnsData(JSON.parse(data.answer));
-          setKbaseData((data.kbase));
+          setAnsData(JSON.parse(data.answer)); 
           setIsLoading(false);
           setIsValidPodata(true); 
           alert("Query submitted successfully");
@@ -181,8 +178,7 @@ const BusinessRuleGenerator = () => {
           </div>
           <button className="saveBtn generate" onClick={generateRules}>
             Generate Business Rules
-          </button>
-          {kbaseData && <p className="kbaseText">{kbaseData}</p>}
+          </button> 
         </div>
         {ansData.length > 0 && (
           <>

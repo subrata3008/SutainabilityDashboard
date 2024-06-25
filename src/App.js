@@ -17,6 +17,7 @@ import awsExports from './aws-exports';
 import Tracking from './component/tracking/tracking';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import BusinessRuleGenerator from './component/businessRuleGenerator/businessRuleGenerator';
+import QueryGenerator from './component/queryGenerator/queryGenerator';
 Amplify.configure(awsExports);
 function App({ signOut, user }) {
   const { route } = useAuthenticator(context => [context.route]);
@@ -117,6 +118,16 @@ function App({ signOut, user }) {
                       Business Rules Generator
                     </NavLink>
                   </li> 
+                  <li>
+                    <NavLink
+                      to="/queryGenerator"
+                      className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active" : ""
+                      }
+                    >
+                      Query Generator
+                    </NavLink>
+                  </li> 
                 </ul>
               </li> 
               <div className='signOutBtn-wrapper'>                
@@ -139,6 +150,7 @@ function App({ signOut, user }) {
           <Route exact path="/tracking" element={<Tracking />}></Route>
           <Route exact path="/utility" element={<Utility />}></Route>
           <Route exact path="/brg" element={<BusinessRuleGenerator />}></Route>
+          <Route exact path="/queryGenerator" element={<QueryGenerator />}></Route>
         </Routes>
       </div> 
         </div>

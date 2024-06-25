@@ -220,7 +220,7 @@ table, th, td {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 320px;
+  width: 38vw;
   background-color: #ededed;
   color: #000000;
   text-align: center; 
@@ -262,7 +262,7 @@ table, th, td {
   content: "";
   position: absolute;
   bottom: 100%;
-  left: 50%;
+  left: 28%; 
   margin-left: -5px;
   border-width: 9px;
   border-style: solid;
