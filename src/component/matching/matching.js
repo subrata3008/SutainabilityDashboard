@@ -16,6 +16,7 @@ const Matching = () => {
   const items = { ...localStorage };
   const loggedInuserName = JSON.parse(items[Object.keys(items)[1]])
     .UserAttributes[2].Value;
+    debugger
   //   console.log(JSON.parse(items[Object.keys(items)[1]])
   //   .UserAttributes);
   // console.log(loggedInuserName);
