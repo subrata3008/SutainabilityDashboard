@@ -36,9 +36,10 @@ const DatatableComp = (props) => {
       }}
       dataKey="id"
       tableStyle={{
-        minWidth: "40rem",
+        minWidth: "20rem",
         backgroundColor: "var(--green-200)",
         fontSize: "12px",
+        height: "95vh"
       }}
       emptyMessage={isLoading ? "Loading..." : "No data found"}
     >

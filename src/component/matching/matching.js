@@ -172,12 +172,13 @@ const Matching = () => {
           </span>
         </div>
 
-        <div className="table-container">
+        <div className="matching table-container">
           <SalesDatatable
             salesTableData={salesTableData}
             setselectedSales={setselectedSales}
           />
         </div>
+        
         <div className="filter-container">
           <div className="top-block">
             <div className="preset-section">

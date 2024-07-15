@@ -42,8 +42,8 @@
     animation: lo-spin 1500ms infinite linear;
     -webkit-animation:lo-spin 1500ms infinite linear;
     border-radius: 0.5em;
-    -webkit-box-shadow: #fff 1.5em 0 0 0, #fff 1.1em 1.1em 0 0, #fff 0 1.5em 0 0, #fff -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, #fff 0 -1.5em 0 0, #fff 1.1em -1.1em 0 0;
-    box-shadow: #fff 1.5em 0 0 0, #fff 1.1em 1.1em 0 0, #fff 0 1.5em 0 0, #fff -1.1em 1.1em 0 0, #fff -1.5em 0 0 0, #fff -1.1em -1.1em 0 0, #fff 0 -1.5em 0 0, #fff 1.1em -1.1em 0 0;
+    -webkit-box-shadow: #538fe0 1.5em 0 0 0, #538fe0 1.1em 1.1em 0 0, #538fe0 0 1.5em 0 0, #538fe0 -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, #538fe0 0 -1.5em 0 0, #538fe0 1.1em -1.1em 0 0;
+    box-shadow: #538fe0 1.5em 0 0 0, #538fe0 1.1em 1.1em 0 0, #538fe0 0 1.5em 0 0, #538fe0 -1.1em 1.1em 0 0, #538fe0 -1.5em 0 0 0, #538fe0 -1.1em -1.1em 0 0, #538fe0 0 -1.5em 0 0, #538fe0 1.1em -1.1em 0 0;
 }
   .spanner{
     position:absolute;
