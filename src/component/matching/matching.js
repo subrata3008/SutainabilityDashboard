@@ -14,7 +14,7 @@ const Matching = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isNodata, setIsNodata] = useState(false);
   const items = { ...localStorage };
-  const loggedInuserName = JSON.parse(items[Object.keys(items)[1]])
+  const loggedInuserName = JSON.parse(items[Object.keys(items)[2]])
     .UserAttributes[2].Value;
     debugger
   //   console.log(JSON.parse(items[Object.keys(items)[1]])
