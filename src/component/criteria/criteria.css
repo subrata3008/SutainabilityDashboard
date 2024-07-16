@@ -12,8 +12,9 @@ body {
     overflow: auto;
 }
 .site-wrap {
-    display: grid;
-    grid-template-columns: 280px 1fr;
+    display: flex;
+    height: 100vh;
+    background: #e5e5e9;
 }
 .site-nav {
     background: #587aa7;

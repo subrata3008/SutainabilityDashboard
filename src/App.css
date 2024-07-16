@@ -7,6 +7,12 @@ body{
 .active{
   background: linear-gradient(to right, #101b2d, transparent);
 }
+.card{
+  padding: 0 !important;
+}
+.generateData-wrapper{
+  padding: 3% 0 !important; 
+}
 a.active::before{
   content: "";
   position: absolute;
