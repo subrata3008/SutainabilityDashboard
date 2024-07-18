@@ -62,6 +62,7 @@ a.active::before{
   background-color: #f1f1f1;
   padding: 5% 3%;
   min-height: 100vh;
+  overflow-y: scroll;
 }
 .p-datatable-table .p-datatable-scrollable-table{
     overflow-x: auto; 
