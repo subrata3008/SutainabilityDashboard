@@ -21,7 +21,7 @@ body {
     color: white; 
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 260px;
 }
 .site-nav a {
     color: inherit;
