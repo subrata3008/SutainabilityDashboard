@@ -1,6 +1,6 @@
 .top-section-container{
     color: #000;
-    padding: 1% .5%;
+    padding: 1% .5% !important;
 } 
 .filter-container{
   margin: 0 2%;

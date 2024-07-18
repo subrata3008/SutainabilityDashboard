@@ -40,6 +40,7 @@
     margin-bottom: 20px;
     -webkit-column-break-inside: avoid; 
     box-sizing: border-box;
+    padding: 2% 1% !important;
   }
   .btnContainer{
     width: 100%;
