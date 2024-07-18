@@ -140,7 +140,7 @@ const BusinessRuleGenerator = () => {
   const getBusinessResponse = (resp) => { 
     const finalResp = resp.map((eachData) => (
       <tr>
-        <td>
+        <td  style={{width:'85%'}}>
           {
             eachData[
               Object.keys(resp[0]).filter(

@@ -15,6 +15,7 @@
 }
 .cartableData th, .cartableData td{
   border: 1px solid gray;
+  padding: 3px 2%;
 }
 .cartableData tr:nth-child(odd){
   background: #e7f1ff;
