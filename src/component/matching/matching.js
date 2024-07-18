@@ -14,13 +14,10 @@ const Matching = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isNodata, setIsNodata] = useState(false);
   const items = { ...localStorage };
-  const loggedInuserName = JSON.parse(items[Object.keys(items)[5]])
-    .UserAttributes[2].Value;
-    debugger
-  //   console.log(JSON.parse(items[Object.keys(items)[1]])
-  //   .UserAttributes);
-  // console.log(loggedInuserName);
-  const callInputcriteria = (type) => {
+  let userDataIndex = Object.keys(items).findIndex(e=>e.endsWith('userData')); 
+  const loggedInuserName = JSON.parse(items[Object.keys(items)[userDataIndex]])
+    .UserAttributes[2].Value; 
+    const callInputcriteria = (type) => {
     setTableData([]);
     setSalesTableData([]);
     setIsLoading(true);
