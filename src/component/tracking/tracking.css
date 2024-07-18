@@ -41,11 +41,7 @@
 }
 .downloadBtn:hover, .saveBtn:hover, .searchBtn:hover{
 background-color: #2d5ca7;
-} 
-.manual-filter-container{  
-  display: flex; 
-  padding: 1% 1% 0 2%;
-} 
+}  
 .sale-details{
   border: 1px solid black;
   width: 95vw; 
