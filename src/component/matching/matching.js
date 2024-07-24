@@ -177,7 +177,7 @@ const Matching = () => {
           />
         </div>
         
-        <div className="filter-container">
+        {/* <div className="filter-container">
           <div className="top-block">
             <div className="preset-section">
               <span>Preset Search</span>
@@ -225,7 +225,7 @@ const Matching = () => {
               <input type="text" />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="manual-filter-container">
           <span className="saveBtn" onClick={bioMatchingFunc}>

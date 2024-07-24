@@ -28,10 +28,7 @@
 .p-column-filter-menu-button.p-column-filter-menu-button-active, .p-column-filter-menu-button.p-column-filter-menu-button-active:hover {
   background: #e7f1ff;
   color: #2a65c5;
-}
-.p-datatable-emptymessage td{
-  padding-left: 43vw;
-}
+} 
 .p-button { 
   color: #fff;
   background: #2a65c5;

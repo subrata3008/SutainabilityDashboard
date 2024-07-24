@@ -124,10 +124,8 @@ body {
 .downloadBtn{
     margin-right: 10vw;
 }
-main {
-    border-top-left-radius: 2rem;
+main { 
     background: #ebecee; 
-    position: relative;
 }
 main > header {
     padding: 3rem 3rem 0 3rem;
