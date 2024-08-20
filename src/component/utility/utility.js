@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./utility.css";  
-import ApiLoader from "../loader/loader"; 
+import ApiLoader from "../loader/loader";  
 
 const Utility = () => {
   const [podata, setPodata] = useState('');
@@ -46,7 +46,7 @@ const Utility = () => {
        {!isValidPodata && <span style={{color:'red'}}>Please enter valid Purchase order data</span>}
         </div>
        <button className="saveBtn calculate" onClick={calculateData}>Calculate</button>
-      </div>
+      </div> 
        { carbonData && 
        <div className="cartTable">
        <table className="cartableData">

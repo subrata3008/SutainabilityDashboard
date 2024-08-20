@@ -22,6 +22,7 @@ import Tracking from "./component/tracking/tracking";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import BusinessRuleGenerator from "./component/businessRuleGenerator/businessRuleGenerator";
 import QueryGenerator from "./component/queryGenerator/queryGenerator";
+import FileInput from "./component/fileInput/fileInput";
 Amplify.configure(awsExports);
 function App({ signOut, user }) {
   const { route } = useAuthenticator((context) => [context.route]);
@@ -116,6 +117,16 @@ function App({ signOut, user }) {
                     </li>
                     <li>
                       <NavLink
+                        to="/fileUpload"
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "active" : ""
+                        }
+                      >
+                        Data Upload
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
                         to="/queryGenerator"
                         className={({ isActive, isPending }) =>
                           isPending ? "pending" : isActive ? "active" : ""
@@ -155,6 +166,11 @@ function App({ signOut, user }) {
                 exact
                 path="/queryGenerator"
                 element={<QueryGenerator />}
+              ></Route>
+              <Route
+                exact
+                path="/fileUpload"
+                element={<FileInput />}
               ></Route>
             </Routes>
           </div>
