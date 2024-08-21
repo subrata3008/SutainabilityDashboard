@@ -135,7 +135,7 @@ main > header {
     display: flex;
     background: #e5e5e9;
     flex-direction: column;
-    width: 76%;
+    width: 85%;
 }
 .content-columns .col {
     min-height: 500px;
