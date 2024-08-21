@@ -11,6 +11,7 @@ const MatchingSalesDatatable = (props) => {
     po: { value: null, matchMode: FilterMatchMode.EQUALS },
     POItem: { value: null, matchMode: FilterMatchMode.EQUALS },
     POdate: { value: null, matchMode: FilterMatchMode.EQUALS },
+    Plant: { value: null, matchMode: FilterMatchMode.EQUALS },
     BatchNo: { value: null, matchMode: FilterMatchMode.EQUALS },
     CertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
     feedStockStype: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -70,6 +71,13 @@ const MatchingSalesDatatable = (props) => {
         dataType="date"
         field="POdate"
         header="Purchase order date"
+      ></Column>
+      <Column
+        filter
+        filterPlaceholder="Search by Plant"
+        sortable 
+        field="Plant"
+        header="Plant"
       ></Column>
       <Column
         filter

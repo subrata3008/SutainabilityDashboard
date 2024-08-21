@@ -96,7 +96,9 @@
   justify-content: center;
   padding: 3%;
 }
-/* .p-datatable-table{
-  overflow-x: auto; 
-  width: 70% !important;
-} */
+.p-datatable-table{
+  overflow-x: auto;  
+}
+.matchingTable .p-datatable-table{ 
+  width: 70% !important; 
+}

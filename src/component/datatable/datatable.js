@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import "../datatable/datatable.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { FilterMatchMode,  } from "primereact/api";
+import { FilterMatchMode, } from "primereact/api";
 
 const DatatableComp = (props) => {
-  const { salesTableData, isLoading } = props; 
+  const { salesTableData, isLoading } = props;
   const [selectedDatas, setSelectedDatas] = useState(null);
-  const [filters, ] = useState({
+  const [filters,] = useState({
     po: { value: null, matchMode: FilterMatchMode.EQUALS },
     POItem: { value: null, matchMode: FilterMatchMode.EQUALS },
     POdate: { value: null, matchMode: FilterMatchMode.EQUALS },
+    Plant: { value: null, matchMode: FilterMatchMode.EQUALS },
     BatchNo: { value: null, matchMode: FilterMatchMode.EQUALS },
     RefineryCertID: { value: null, matchMode: FilterMatchMode.CONTAINS },
     feedStockStype: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -29,9 +30,9 @@ const DatatableComp = (props) => {
       size={"normal"}
       filters={filters}
       filterDisplay="menu"
-      removableSort 
+      removableSort
       selection={selectedDatas}
-      onSelectionChange={(e) => { 
+      onSelectionChange={(e) => {
         setSelectedDatas(e.value);
       }}
       dataKey="id"
@@ -43,7 +44,7 @@ const DatatableComp = (props) => {
       }}
       emptyMessage={isLoading ? "Loading..." : "No data found"}
     >
-       <Column
+      <Column
         filter
         filterPlaceholder="Search by PO"
         sortable
@@ -63,6 +64,13 @@ const DatatableComp = (props) => {
         sortable
         field="POdate"
         header="Purchase order date"
+      ></Column>
+      <Column
+        filter
+        filterPlaceholder="Search by Plant"
+        sortable
+        field="Plant"
+        header="Plant"
       ></Column>
       <Column
         filter

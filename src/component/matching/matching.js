@@ -73,6 +73,7 @@ const Matching = () => {
                 quantity: dataWithBatch[indx].LoadedQuantity,
                 UoM: eachbatchData.UoM,
                 po: eachbatchData.PO,
+                Plant: eachbatchData.Plant,
                 POdate: eachbatchData.POdate,
                 POItem: eachbatchData.POItem,
                 carbonIntensity: eachBatch.carbonIntensity,
@@ -175,57 +176,7 @@ const Matching = () => {
             salesTableData={salesTableData}
             setselectedSales={setselectedSales}
           />
-        </div>
-        
-        {/* <div className="filter-container">
-          <div className="top-block">
-            <div className="preset-section">
-              <span>Preset Search</span>
-              <select>
-                <option>All supplied</option>
-              </select>
-              <span className="saveBtn">Search</span>
-              <span className="searchBtn">Save</span>
-            </div>
-          </div>
-
-          <div className="bottom-block">
-            <div className="filterOptions">
-              <span className="quantity">Has Free Quantity</span>
-              <select>
-                <option>All supplied</option>
-              </select>
-            </div>
-            <div className="filterOptions">
-              <span>Deal Number</span>
-              <input type="text" />
-            </div>
-            <div className="filterOptions">
-              <span>Allocation Pool</span>
-              <input type="text" />
-            </div>
-            <div className="filterOptions">
-              <span>Transport Mode</span>
-              <input type="text" />
-            </div>
-            <div className="filterOptions">
-              <span>Options</span>
-              <input type="text" />
-            </div>
-            <div className="filterOptions">
-              <span>Size</span>
-              <input type="text" />
-            </div>
-            <div className="filterOptions">
-              <span>Start Date</span>
-              <input type="text" />
-            </div>
-            <div className="filterOptions">
-              <span>End Date</span>
-              <input type="text" />
-            </div>
-          </div>
-        </div> */}
+        </div> 
 
         <div className="manual-filter-container">
           <span className="saveBtn" onClick={bioMatchingFunc}>
@@ -241,7 +192,7 @@ const Matching = () => {
           </div>
         )}
         {tableData.length !== 0 && (
-          <div className="table-container">
+          <div className="table-container matchingTable">
             <MatchingSalesDatatable
               salesTableData={tableData}
               isLoading={isLoading}

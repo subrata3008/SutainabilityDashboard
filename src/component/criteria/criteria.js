@@ -70,6 +70,7 @@ const Criteria = () => {
               quantity: eachbatchData.LoadedQuantity || '',
               UoM: eachbatchData.UoM,
               po: eachbatchData.PO || '',
+              Plant:eachbatchData.Plant || '',
               POdate:eachbatchData.POdate || '',
               POItem:eachbatchData.POItem || '',
               carbonIntensity: eachBatch.carbonIntensity || ''
@@ -101,18 +102,6 @@ const Criteria = () => {
   
     </main>
    
-
-
-
-
-    {/* <div className="card">
-      <div className="btnContainer">
-        <span className="downloadBtn" onClick={exportExcel}>
-          <i className="fa fa-download" aria-hidden="true"></i>Download to Excel
-        </span>
-      </div> 
-        <DatatableComp salesTableData={salesTableData} isLoading={isLoading} /> 
-    </div> */}
     </>
   );
 };
