@@ -98,5 +98,5 @@
 }
 .p-datatable-table{
   overflow-x: auto; 
-  width: 70% !important;
+  /* width: 70% !important; */
 }

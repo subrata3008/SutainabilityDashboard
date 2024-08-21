@@ -84,7 +84,7 @@ const SalesDatatable = (props) => {
         filterPlaceholder="Search by Product Description"
         sortable
         field="ProductDescription"
-        align="right"
+        align="left"
         header="Product Description"
       ></Column>
       
@@ -92,7 +92,7 @@ const SalesDatatable = (props) => {
         filter
         filterPlaceholder="Search by Requested quantity"
         sortable
-        align="right"
+        align="left"
         field="RequestedQuantity"
         header="Requested quantity"
       ></Column>
