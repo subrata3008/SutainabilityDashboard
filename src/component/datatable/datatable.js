@@ -53,13 +53,6 @@ const DatatableComp = (props) => {
       ></Column>
       <Column
         filter
-        filterPlaceholder="Search by Plant"
-        sortable
-        field="Plant"
-        header="Plant"
-      ></Column>
-      <Column
-        filter
         filterPlaceholder="Search by POItem"
         sortable
         field="POItem"
@@ -71,6 +64,13 @@ const DatatableComp = (props) => {
         sortable
         field="POdate"
         header="Purchase order date"
+      ></Column>
+      <Column
+        filter
+        filterPlaceholder="Search by Plant"
+        sortable
+        field="Plant"
+        header="Plant"
       ></Column>
       <Column
         filter
