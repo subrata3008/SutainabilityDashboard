@@ -100,10 +100,7 @@ function App({ signOut, user }) {
                   >
                     Utility
                   </NavLink>
-                  <ul>
-                    <li>
-                      <a>Calculator</a>
-                    </li>
+                  <ul> 
                     <li>
                       <NavLink
                         to="/brg"

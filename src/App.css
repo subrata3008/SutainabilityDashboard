@@ -31,7 +31,7 @@ a.active::before{
   padding: 5px;
     margin-bottom: 10px;
     color: #fff;
-    background: linear-gradient(to right, #101b2d, transparent); 
+    background: #2a65c5; 
 }
 .p-datatable.p-datatable-striped .p-datatable-tbody > tr.p-row-odd{
   background:#e7f1ff;

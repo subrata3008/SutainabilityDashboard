@@ -97,6 +97,8 @@
   padding: 3%;
 }
 .p-datatable-table{
-  overflow-x: auto; 
-  /* width: 70% !important; */
+  overflow-x: auto;  
+}
+.matchingTable .p-datatable-table{ 
+  width: 70% !important; 
 }

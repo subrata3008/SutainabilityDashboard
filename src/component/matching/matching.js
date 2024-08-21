@@ -192,7 +192,7 @@ const Matching = () => {
           </div>
         )}
         {tableData.length !== 0 && (
-          <div className="table-container">
+          <div className="table-container matchingTable">
             <MatchingSalesDatatable
               salesTableData={tableData}
               isLoading={isLoading}

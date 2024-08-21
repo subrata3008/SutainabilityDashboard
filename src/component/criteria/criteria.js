@@ -102,18 +102,6 @@ const Criteria = () => {
   
     </main>
    
-
-
-
-
-    {/* <div className="card">
-      <div className="btnContainer">
-        <span className="downloadBtn" onClick={exportExcel}>
-          <i className="fa fa-download" aria-hidden="true"></i>Download to Excel
-        </span>
-      </div> 
-        <DatatableComp salesTableData={salesTableData} isLoading={isLoading} /> 
-    </div> */}
     </>
   );
 };
