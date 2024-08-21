@@ -70,6 +70,7 @@ const Criteria = () => {
               quantity: eachbatchData.LoadedQuantity || '',
               UoM: eachbatchData.UoM,
               po: eachbatchData.PO || '',
+              Plant:eachbatchData.Plant || '',
               POdate:eachbatchData.POdate || '',
               POItem:eachbatchData.POItem || '',
               carbonIntensity: eachBatch.carbonIntensity || ''
