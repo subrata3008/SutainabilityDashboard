@@ -125,9 +125,10 @@ function FileInput() {
     <div className="wrapper">
 
   
-      <h1 onClick={getPresignedUrl}>File Selection</h1>
+      <h1 className="name" onClick={getPresignedUrl}>File Selection</h1>
+      
       <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button> 
+      <button className='saveBtn upload' onClick={handleUpload}>Upload</button> 
       {/* {uploadProgress} */}
       {/* {data && (
         <div>
