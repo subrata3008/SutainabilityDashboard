@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import "../datatable/datatable.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { FilterMatchMode } from "primereact/api";
 
 const TrackingDatatable = (props) => {
-  const { trackTableData, isLoading, setselectedSales } = props; 
+  const { trackTableData, isLoading} = props; 
   console.log(trackTableData)
   //const [selectedDatas, setSelectedDatas] = useState(null); 
   const [filters, ] = useState({
