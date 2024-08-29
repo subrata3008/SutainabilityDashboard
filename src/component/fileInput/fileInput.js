@@ -4,11 +4,13 @@ import {React,useState} from 'react';
 import "./fileInput.css";  
 import axios from 'axios';
 import * as XLSX from 'xlsx';
+import ApiLoader from '../loader/loader';
 
 function FileInput() { 
   const [selectedFile, setSelectedFile] = useState(null);
   const [isEmptyCountry, setEmptyCountry] = useState(false);
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const items = { ...localStorage };
   let userDataIndex = Object.keys(items).findIndex(e=>e.endsWith('userData')); 
@@ -32,12 +34,12 @@ function FileInput() {
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
       const sheetData = XLSX.utils.sheet_to_json(sheet);
-      const emptyCountry = sheetData.filter(eachRow=>{
-          if(!eachRow.Country){ 
+      const emptyCountryField = sheetData.filter(eachRow=>{
+          if(!eachRow.Country || !eachRow.CountryIsoCode || !eachRow.CountryText){ 
             return eachRow
           }
       })
-      setEmptyCountry(emptyCountry.length > 0 ? true : false);
+      setEmptyCountry(emptyCountryField.length > 0 ? true : false);
       setData(sheetData);
     };
 
@@ -88,7 +90,10 @@ function FileInput() {
           (progressEvent.loaded * 100) / progressEvent.total
         );
         setUploadProgress(percentCompleted);
+        alert("File Uploaded Successfully");
         console.log(`Upload Progress: ${percentCompleted}%`);
+           
+        setIsLoading(false);
       },
     });
     console.log(uploadResponse);
@@ -105,7 +110,8 @@ function FileInput() {
     if(isEmptyCountry){
       alert("One of the mandetory field is empty");
       return;
-    }
+    }   
+    setIsLoading(true);
     try {
       // Ensure a file is selected
       if (!selectedFile) {
@@ -122,9 +128,9 @@ function FileInput() {
   };
 
   return (
-    <div className="wrapper">
-
-  
+    <>
+    <ApiLoader isLoading={isLoading} />
+    <div className="wrapper"> 
       <h1 className="name" onClick={getPresignedUrl}>File Selection</h1>
       
       <input type="file" onChange={handleFileChange} />
@@ -137,6 +143,7 @@ function FileInput() {
         </div>
       )} */}
   </div>
+  </>
   );
 }
 
