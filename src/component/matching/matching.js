@@ -108,7 +108,7 @@ const Matching = () => {
         alert(finalResp.message);
       })
       .catch((err) => {
-        console.log("Rules not matching for this PO");
+        console.log(err);
         setIsLoading(false);
       });
   };
@@ -145,7 +145,7 @@ const Matching = () => {
         alert(finalResp.message);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Rules not matching for this PO");
         setIsLoading(false);
       });
   };
