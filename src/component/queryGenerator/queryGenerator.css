@@ -1,7 +1,4 @@
-.Main,label{
-  text-decoration: none;
-  color: #fff;
-}
+ 
 .calLabel{
   color: #000;
 }
@@ -9,39 +6,12 @@
   text-indent: 20vw;
   text-align: justify;
   letter-spacing: .5px;
-}
-.cartableData th, .cartableData td{
-  border: 1px solid gray;
-}
-.cartableData th, .cartableData td{
-  border: 1px solid gray;
-  padding: 3px 2%;
-}
-.cartableData tr:nth-child(odd){
-  background: #e7f1ff;
-}
-.cartableData{
-  margin: auto;
-    min-width: 300px;
-    max-width: 50%;
-    border-collapse: collapse;
-    color: #333;
-    border-radius: 0.4em; 
-    float: left;
-    border: 1px solid gray;
-    background: #fff;
-
-}
+} 
 .btnHolder{
   padding-bottom: 2%;
     width: 100%;
     display: flex; 
-}
-.cartTable{
-  width: 100%;
-  background-color: #e5e5e9;
-  padding-left: 1%;
-}
+} 
 .card {
   display: flex;
   flex-direction: column;
@@ -52,11 +22,7 @@
   box-sizing: border-box;
   padding: 0% 1% !important;
   overflow-y: scroll;
-  }
-  .btnContainer{
-    width: 100%;
-    padding: 1%;
-  }
+  } 
   /* Force varying heights to simulate dynamic content */
   .card:first-child {
     height: 485px;
@@ -78,19 +44,7 @@
   width: 70vw;
   flex-flow: column;
   text-align: left;
- }
- .podData-wrapper input {
-  border-width: 0px 0px 1px 0px;
-  outline: 0;
-  width: 20vw;
-  margin-right: 5%;
-  margin-left: 5%;
-  line-height: 4vh;
-}
-.podData-input-wrapper{
-  display: flex;
-  flex-direction: column;
-}
+ } 
 .generate{
   margin-left: 0%;
     height: 30px;
