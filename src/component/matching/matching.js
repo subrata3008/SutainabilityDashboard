@@ -145,7 +145,7 @@ const Matching = () => {
         alert(finalResp.message);
       })
       .catch((err) => {
-        alert("Rules not matching for this PO");
+        console.log(err);
         setIsLoading(false);
       });
   };
