@@ -122,7 +122,7 @@ const Matching = () => {
       body: JSON.stringify(
         JSON.stringify(
           {
-            salesData111: selectedSales,
+            salesData: selectedSales,
             purchaseData: selectedMatchingSales,
             userEmail: loggedInuserName,
           },
