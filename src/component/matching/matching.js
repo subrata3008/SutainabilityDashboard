@@ -39,9 +39,7 @@ const Matching = () => {
     const SalesOrder = fetch(SalesOrderUrl).then((response) => response.json());
     Promise.all([InputCriteria, SalesOrder])
       .then(([InputCriteriaData, SalesOrderData]) => {
-        console.log(InputCriteria);
-        console.log(SalesOrderData);
-        //debugger
+       
         if(SalesOrderData.message){
           alert(SalesOrderData.message);          
           setIsLoading(false);
@@ -61,8 +59,7 @@ const Matching = () => {
         let flag = 0;
         if (dataWithBatch.length > 0) {
           let finalData = dataWithBatch.map((eachbatchData,indx) => {
-            return eachbatchData.batch.map((eachBatch, index) => {
-              console.log(dataWithBatch);
+            return eachbatchData.batch.map((eachBatch, index) => { 
               flag++;
               return {
                 id: flag,
@@ -134,7 +131,8 @@ const Matching = () => {
         )
       ),
     };
-    debugger
+    
+    
     fetch(
       "https://ip07sv5z51.execute-api.us-east-1.amazonaws.com/ManualBioMatching",
       requestOptions
@@ -146,6 +144,7 @@ const Matching = () => {
       })
       .catch((err) => {
         console.log(err);
+        //alert("Something went wrong")
         setIsLoading(false);
       });
   };
