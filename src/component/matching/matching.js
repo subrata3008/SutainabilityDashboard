@@ -117,8 +117,9 @@ const Matching = () => {
     setIsLoading(true);
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      mode: "no-cors",
+      headers: { 
+        'Content-type': 'application/json; charset=UTF-8',
+       },
       body: JSON.stringify(
         JSON.stringify(
           {
@@ -131,22 +132,23 @@ const Matching = () => {
         )
       ),
     };
-    
-    
+ 
+ 
     fetch(
-      "https://ip07sv5z51.execute-api.us-east-1.amazonaws.com/ManualBioMatching",
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((finalResp) => {
-        setIsLoading(false);
-        alert(finalResp.message);
-      })
-      .catch((err) => {
-        console.log(err);
-        //alert("Something went wrong")
-        setIsLoading(false);
-      });
+        "https://ip07sv5z51.execute-api.us-east-1.amazonaws.com/ManualBioMatching",
+        requestOptions
+      )
+    .then((response) => response.json())
+    .then((finalResp) => {
+      setIsLoading(false);
+      alert(finalResp.message); 
+    })
+    .catch((err) => {
+      console.log(err);
+      //alert("Something went wrong")
+      setIsLoading(false);
+    });
+      
   };
 
   return (
