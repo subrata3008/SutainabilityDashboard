@@ -38,8 +38,7 @@ const MatchingSalesDatatable = (props) => {
       removableSort 
       selection={selectedDatas}
       onSelectionChange={(e) => { 
-        setSelectedDatas(e.value);
-        console.log(e.value);
+        setSelectedDatas(e.value); 
       }}
       dataKey="id"
       tableStyle={{

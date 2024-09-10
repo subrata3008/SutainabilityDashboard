@@ -37,7 +37,6 @@ const SalesDatatable = (props) => {
       selectionMode={"checkbox"}
       selection={selectedDatas}
       onSelectionChange={(e) => { 
-        console.log(e.value);
         setSelectedDatas(e.value);
       }}
       dataKey="id"
