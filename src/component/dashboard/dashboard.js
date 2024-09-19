@@ -3,6 +3,8 @@ import "../dashboard/dashboard.css";
 import SalesDatatable from "../salesDatatable/salesDatatable";
 import ApiLoader from "../loader/loader";
 import MatchingSalesDatatable from "../matchingSalesDatatable/matchingSalesDatatable";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DashBoard = () => {
   const [monthValue, setMonthValue] = useState("");
@@ -86,7 +88,16 @@ const DashBoard = () => {
    .then(response=>response.json())
    .then(finalResp=>{
     setIsLoading(false);
-    alert(finalResp.message);
+    toast.success(finalResp.message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+       });  
    })
    .catch(err=>{
     console.log(err);
@@ -108,8 +119,17 @@ const DashBoard = () => {
     fetch('https://ip07sv5z51.execute-api.us-east-1.amazonaws.com/ManualBioMatching',requestOptions)
    .then(response=>response.json())
    .then(finalResp=>{
-    setIsLoading(false);
-    alert(finalResp.message);
+    setIsLoading(false); 
+    toast.success(finalResp.message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+       });  
    })
    .catch(err=>{
     console.log(err);
@@ -119,6 +139,7 @@ const DashBoard = () => {
  
   return (
     <>
+    <ToastContainer/>
     <ApiLoader isLoading={isLoading}/>
     <div className="top-section-container">
       <div className="date-filter-container">

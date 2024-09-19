@@ -3,6 +3,8 @@ import "../matching/matching.css";
 import SalesDatatable from "../salesDatatable/salesDatatable";
 import ApiLoader from "../loader/loader";
 import MatchingSalesDatatable from "../matchingSalesDatatable/matchingSalesDatatable";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Matching = () => {
   const [monthValue, setMonthValue] = useState("");
@@ -41,7 +43,16 @@ const Matching = () => {
       .then(([InputCriteriaData, SalesOrderData]) => {
        
         if(SalesOrderData.message){
-          alert(SalesOrderData.message);          
+          toast.success(SalesOrderData.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+             });          
           setIsLoading(false);
         }else{
         let finalSalesData = SalesOrderData.records.map(
@@ -99,10 +110,35 @@ const Matching = () => {
         "&product=+" +
         Material
     )
-      .then((response) => response.json())
+      .then((response) => { 
+        if(response.ok)
+          {
+            return response.json();         
+          }
+    
+          toast.error("Internal server error", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+             });  
+      })
       .then((finalResp) => {
         setIsLoading(false);
-        alert(finalResp.message);
+        toast.success(finalResp.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+           });   
       })
       .catch((err) => {
         console.log(err);
@@ -138,10 +174,34 @@ const Matching = () => {
         "https://ip07sv5z51.execute-api.us-east-1.amazonaws.com/ManualBioMatching",
         requestOptions
       )
-    .then((response) => response.json())
+    .then((response) => { 
+      if(response.ok)
+        {
+          return response.json();         
+        } 
+        toast.error("Internal server error", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+           });  
+    })
     .then((finalResp) => {
-      setIsLoading(false);
-      alert(finalResp.message); 
+      setIsLoading(false); 
+      toast.success(finalResp.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+         });   
     })
     .catch((err) => {
       console.log(err);
@@ -153,6 +213,7 @@ const Matching = () => {
 
   return (
     <>
+    <ToastContainer/>
       <ApiLoader isLoading={isLoading} />
       <div className="top-section-container">
         <div className="date-filter-container">

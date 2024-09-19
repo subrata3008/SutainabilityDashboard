@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../criteria/criteria.css"; 
 import DatatableComp from "../datatable/datatable";
 import ApiLoader from "../loader/loader"; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Criteria = () => {
   const [salesTableData, setSalesTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);  
@@ -47,7 +50,22 @@ const Criteria = () => {
 
   useEffect(() => {
     setSalesTableData([]);
-    const InputCriteria = fetch('https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria').then((response) => response.json());
+    const InputCriteria = fetch('https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } 
+      toast.error("Internal server error", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    });
     setIsLoading(true); 
     Promise.all([InputCriteria])
       .then((InputCriteriaData) => { 
@@ -90,7 +108,7 @@ const Criteria = () => {
 
     
     <main> 
-      <div class="content-columns">
+      <div className="content-columns">
       <div className="btnContainer">
         <span className="downloadBtn" onClick={exportExcel}>
           <i className="fa fa-download" aria-hidden="true"></i>Download to Excel

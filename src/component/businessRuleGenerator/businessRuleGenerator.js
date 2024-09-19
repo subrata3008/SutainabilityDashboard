@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./businessRuleGenerator.css";
 import ApiLoader from "../loader/loader";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BusinessRuleGenerator = () => {
   const [podata, setPodata] = useState(""); 
@@ -49,9 +51,17 @@ const BusinessRuleGenerator = () => {
           setAnsData(JSON.parse(data.answer)); 
           setIsLoading(false);
           setIsValidPodata(true); 
-          alert("Query submitted successfully");
-          //setPodata("");
-        })
+          toast.success("Query submitted successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+             }); 
+          })
         .catch((error) => {
           console.log(error);
           setIsLoading(false);
@@ -95,14 +105,30 @@ const BusinessRuleGenerator = () => {
       };
       fetch(approveOrRejectRuleUrl, approveOrRejectRulePostOptions)
         .then((data) => {
-          alert(`Query ${status}ed successfully`);
+          toast.success(`Query ${status}ed successfully`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+             });  
           return data.json();
         })
-        .then((data) => {
-          debugger
-          console.log(data);
+        .then((data) => { 
           setIsLoading(false);
-          alert(`Query ${status}ed successfully`);
+          toast.success(`Query ${status}ed successfully`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+             });  
         })
         .catch((error) => {
           setIsLoading(false);
@@ -157,6 +183,7 @@ const BusinessRuleGenerator = () => {
 
   return (
     <>
+      <ToastContainer/>
       <ApiLoader isLoading={isLoading} />
       <div className="card">
         <div className="generateData-wrapper">

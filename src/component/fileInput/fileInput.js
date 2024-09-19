@@ -5,6 +5,8 @@ import "./fileInput.css";
 import axios from 'axios';
 import * as XLSX from 'xlsx';
 import ApiLoader from '../loader/loader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FileInput() { 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -78,7 +80,7 @@ function FileInput() {
 
   const uploadToPresignedUrl = async (presignedUrl) => {
     // Upload file to pre-signed URL
-    console.log(selectedFile)
+    //console.log(selectedFile)
     
     const uploadResponse = await axios.put(presignedUrl, selectedFile, {
       headers: {
@@ -90,13 +92,22 @@ function FileInput() {
           (progressEvent.loaded * 100) / progressEvent.total
         );
         setUploadProgress(percentCompleted);
-        alert("File Uploaded Successfully");
+        toast.success("File Uploaded Successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+           });   
         console.log(`Upload Progress: ${percentCompleted}%`);
            
         setIsLoading(false);
       },
     });
-    console.log(uploadResponse);
+   // console.log(uploadResponse);
   };
 
 
@@ -107,8 +118,17 @@ function FileInput() {
    */
 
   const handleUpload = async () => {
-    if(isEmptyCountry){
-      alert("One of the mandetory field is empty");
+    if(isEmptyCountry){ 
+      toast.error("One of the mandetory field in the file is empty", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+         });  
       return;
     }   
     setIsLoading(true);
@@ -129,19 +149,14 @@ function FileInput() {
 
   return (
     <>
+    <ToastContainer/>
     <ApiLoader isLoading={isLoading} />
     <div className="wrapper"> 
       <h1 className="name" onClick={getPresignedUrl}>File Selection</h1>
       
       <input type="file" onChange={handleFileChange} />
       <button className='saveBtn upload' onClick={handleUpload}>Upload</button> 
-      {/* {uploadProgress} */}
-      {/* {data && (
-        <div>
-          <h2>Imported Data:</h2>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div>
-      )} */}
+      
   </div>
   </>
   );
