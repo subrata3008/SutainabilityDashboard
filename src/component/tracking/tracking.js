@@ -92,7 +92,7 @@ const Tracking = () => {
         {trackTableData.length > 1 &&
           <div className="reportBtn-container">
             <span className="saveBtn generateBtn" onClick={generateReport}>
-              <i className="fa fa-file-excel-o" aria-hidden="true"></i> Generate report
+              <i className="fa fa-file-excel-o" aria-hidden="true"></i> Generate PoS
             </span>
           </div>
         }
