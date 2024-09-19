@@ -1,49 +1,67 @@
 import React, { useState } from "react";
-import "../tracking/tracking.css"; 
-import ApiLoader from "../loader/loader"; 
+import "../tracking/tracking.css";
+import ApiLoader from "../loader/loader";
 import TrackingDatatable from "../trackingDatatable/trackingDatatable";
 
 const Tracking = () => {
+  const [selectedDatas, setselectedSales] = useState(null);
   const [monthValue, setMonthValue] = useState("");
-  const [yearValue, setYearValue] = useState(""); 
-  const [trackTableData, setTtrackTableData] = useState([]); 
-  const [isLoading, setIsLoading] = useState(false);  
+  const [yearValue, setYearValue] = useState("");
+  const [trackTableData, setTtrackTableData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  
-  const callTrackingTableData = () => { 
+
+
+  const generateReport = () => {
+    setIsLoading(true);
+    const { SalesOrder, SalesOrderItem } = selectedDatas;
+    const url = "https://ke8tbgj9g6.execute-api.us-east-1.amazonaws.com/certificate_header_qldb?SalesOrder=" + SalesOrder + "&SalesOrderItem=" + SalesOrderItem;
+    const data = fetch(url)
+      .then(resp => resp.json())
+      .then((data) => {
+        setIsLoading(false);
+        alert(data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  }
+
+  const callTrackingTableData = () => {
     setTtrackTableData([]);
     setIsLoading(true);
     const InputCriteriaUrl = !(monthValue && yearValue)
       ? "https://e9jn3dpild.execute-api.us-east-1.amazonaws.com/BioMatchingTracing_processor"
       : "https://e9jn3dpild.execute-api.us-east-1.amazonaws.com/BioMatchingTracing_processor?year=" +
-        yearValue +
-        "&month=" +
-        monthValue;
-    
+      yearValue +
+      "&month=" +
+      monthValue;
+
     const InputCriteria = fetch(InputCriteriaUrl).then((response) =>
       response.json()
-    ); 
+    );
     Promise.all([InputCriteria])
       .then(([InputCriteriaData]) => {
-        if(InputCriteriaData.message){
+        if (InputCriteriaData.message) {
           alert(InputCriteriaData.message);
           setIsLoading(false);
-        }else{
+        } else {
           let finalSalesData = InputCriteriaData.records.map(
             (eachSalesdata, indx) => {
               eachSalesdata.id = indx;
               return eachSalesdata;
             }
           );
-          setTtrackTableData(finalSalesData);        
-          setIsLoading(false); 
+          setTtrackTableData(finalSalesData);
+          setIsLoading(false);
         }
       })
       .catch((error) => {
         console.error(error);
       });
   };
- 
+
   return (
     <>
       <ApiLoader isLoading={isLoading} />
@@ -68,9 +86,16 @@ const Tracking = () => {
         <div className="table-container">
           <TrackingDatatable
             trackTableData={trackTableData}
-            //setselectedSales={setselectedSales}
+            setselectedSales={setselectedSales}
           />
-        </div> 
+        </div>
+        {trackTableData.length > 1 &&
+          <div className="reportBtn-container">
+            <span className="saveBtn generateBtn" onClick={generateReport}>
+              <i className="fa fa-file-excel-o" aria-hidden="true"></i> Generate report
+            </span>
+          </div>
+        }
       </div>
     </>
   );

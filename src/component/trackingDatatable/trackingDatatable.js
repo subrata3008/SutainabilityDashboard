@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import "../datatable/datatable.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { FilterMatchMode } from "primereact/api";
 
 const TrackingDatatable = (props) => {
-  const { trackTableData, isLoading} = props; 
-  console.log(trackTableData)
-  //const [selectedDatas, setSelectedDatas] = useState(null); 
+  const { trackTableData, isLoading,setselectedSales} = props;  
+  const [selectedDatas, setSelectedDatas] = useState(null); 
   const [filters, ] = useState({
     SalesOrder: { value: null, matchMode: FilterMatchMode.CONTAINS },
     SalesOrderItem: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -24,9 +23,9 @@ const TrackingDatatable = (props) => {
   });
 
   
-  // useEffect(() => { 
-  //   setselectedSales(selectedDatas);
-  // }, [setselectedSales, selectedDatas]);
+  useEffect(() => { 
+    setselectedSales(selectedDatas);
+  }, [setselectedSales, selectedDatas]);
 
   return (
     <DataTable
@@ -39,11 +38,11 @@ const TrackingDatatable = (props) => {
       filterDisplay="menu"
       removableSort
       selectionMode={"checkbox"}
-      //selection={selectedDatas}
-      // onSelectionChange={(e) => { 
-      //   console.log(e.value);
-      //   setSelectedDatas(e.value);
-      // }}
+      selection={selectedDatas}
+      onSelectionChange={(e) => { 
+        console.log(e.value);
+        setSelectedDatas(e.value);
+      }}
       dataKey="id"
       tableStyle={{
         minWidth: "40rem",
@@ -54,7 +53,7 @@ const TrackingDatatable = (props) => {
         isLoading ? <div className="loader"></div> : "No data found"
       }
     >
-      {/* <Column selectionMode="single" headerStyle={{ width: "4rem" }}></Column> */}
+      <Column selectionMode="single" headerStyle={{ width: "4rem" }}></Column>
       <Column
         filter
         filterPlaceholder="Search by Sales Order"
