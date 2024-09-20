@@ -16,12 +16,18 @@ function FileInput() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const items = { ...localStorage };
   let userDataIndex = Object.keys(items).findIndex(e=>e.endsWith('userData')); 
-  // const loggedInuserNameLocal = JSON.parse(items[Object.keys(items)[userDataIndex]])
-  //   .UserAttributes[2].Value; 
-  const loggedInuserName = JSON.parse(items[Object.keys(items)[userDataIndex]])
-    .UserAttributes[0].Value; 
+   const loggedInuserName = JSON.parse(items[Object.keys(items)[userDataIndex]])
+   .UserAttributes.filter(e=>
+    String(e.Value)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+   )[0].Value; 
+   
     console.log(loggedInuserName);
 
+ 
   /**
    * Hand;e file change method
    * @param {*} event 
