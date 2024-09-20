@@ -16,8 +16,10 @@ function FileInput() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const items = { ...localStorage };
   let userDataIndex = Object.keys(items).findIndex(e=>e.endsWith('userData')); 
+  // const loggedInuserNameLocal = JSON.parse(items[Object.keys(items)[userDataIndex]])
+  //   .UserAttributes[2].Value; 
   const loggedInuserName = JSON.parse(items[Object.keys(items)[userDataIndex]])
-    .UserAttributes[2].Value; 
+    .UserAttributes[0].Value; 
     console.log(loggedInuserName);
 
   /**
