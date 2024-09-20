@@ -28,7 +28,7 @@ const Tracking = () => {
         } 
         toast.error("Internal server error", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
@@ -41,7 +41,7 @@ const Tracking = () => {
         setIsLoading(false);
         toast.success(reporData.message, {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
@@ -79,7 +79,7 @@ const Tracking = () => {
         if (InputCriteriaData.message) {
           toast.success(InputCriteriaData.message, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,

@@ -53,7 +53,7 @@ const BusinessRuleGenerator = () => {
           setIsValidPodata(true); 
           toast.success("Query submitted successfully", {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
@@ -107,7 +107,7 @@ const BusinessRuleGenerator = () => {
         .then((data) => {
           toast.success(`Query ${status}ed successfully`, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
@@ -121,7 +121,7 @@ const BusinessRuleGenerator = () => {
           setIsLoading(false);
           toast.success(`Query ${status}ed successfully`, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,

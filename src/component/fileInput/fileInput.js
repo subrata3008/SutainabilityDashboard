@@ -94,7 +94,7 @@ function FileInput() {
         setUploadProgress(percentCompleted);
         toast.success("File Uploaded Successfully", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
@@ -121,7 +121,7 @@ function FileInput() {
     if(isEmptyCountry){ 
       toast.error("One of the mandetory field in the file is empty", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,

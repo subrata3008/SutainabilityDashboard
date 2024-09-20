@@ -90,7 +90,7 @@ const DashBoard = () => {
     setIsLoading(false);
     toast.success(finalResp.message, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
@@ -122,7 +122,7 @@ const DashBoard = () => {
     setIsLoading(false); 
     toast.success(finalResp.message, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
