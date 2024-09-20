@@ -18,7 +18,7 @@ function FileInput() {
   let userDataIndex = Object.keys(items).findIndex(e=>e.endsWith('userData')); 
   const loggedInuserName = JSON.parse(items[Object.keys(items)[userDataIndex]])
     .UserAttributes[2].Value; 
-    //console.log(loggedInuserName);
+    console.log(loggedInuserName);
 
   /**
    * Hand;e file change method
