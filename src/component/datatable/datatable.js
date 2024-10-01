@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "../datatable/datatable.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode, } from "primereact/api";
 
 const DatatableComp = (props) => {
-  const { salesTableData, isLoading } = props;
+  const { salesTableData,setSalesTableData, isLoading } = props;
   const [selectedDatas, setSelectedDatas] = useState(null);
   const [filters,] = useState({
     po: { value: null, matchMode: FilterMatchMode.EQUALS },
@@ -20,6 +21,22 @@ const DatatableComp = (props) => {
     quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
     UoM: { value: null, matchMode: FilterMatchMode.EQUALS },
   });
+ 
+
+  const onRowEditComplete = (e) => {
+    let _salesTableData = [...salesTableData];
+    let { newData, index } = e;
+    debugger;
+    _salesTableData[index] = newData;
+    setSalesTableData(_salesTableData);
+};
+
+  const allowEdit = (rowData) => {
+    return rowData.name !== 'Blue Band';
+};
+  const textEditor = (options) => {
+    return <InputText type="text" value={options.value} onChange={(e) => options.editorCallback(e.target.value)} />;
+  };
 
   return (
     <DataTable
@@ -42,6 +59,8 @@ const DatatableComp = (props) => {
         fontSize: "12px",
         height: "95vh"
       }}
+      onRowEditComplete={onRowEditComplete}
+      editMode="row"
       emptyMessage={isLoading ? "Loading..." : "No data found"}
     >
       <Column
@@ -50,12 +69,14 @@ const DatatableComp = (props) => {
         sortable
         field="po"
         header="Purchase Order"
+        editor={(options) => textEditor(options)}
       ></Column>
       <Column
         filter
         filterPlaceholder="Search by POItem"
         sortable
         field="POItem"
+        editor={(options) => textEditor(options)}
         header="Po Item"
       ></Column>
       <Column
@@ -63,6 +84,7 @@ const DatatableComp = (props) => {
         filterPlaceholder="Search by POdate"
         sortable
         field="POdate"
+        editor={(options) => textEditor(options)}
         header="Purchase order date"
       ></Column>
       <Column
@@ -70,6 +92,7 @@ const DatatableComp = (props) => {
         filterPlaceholder="Search by Plant"
         sortable
         field="Plant"
+        editor={(options) => textEditor(options)}
         header="Plant"
       ></Column>
       <Column
@@ -77,6 +100,7 @@ const DatatableComp = (props) => {
         filterPlaceholder="Search by Certificate"
         sortable
         field="RefineryCertID"
+        editor={(options) => textEditor(options)}
         header="Certificate ID"
       ></Column>
       <Column
@@ -85,6 +109,7 @@ const DatatableComp = (props) => {
         sortable
         field="feedStockStype"
         header="Feed Stock"
+        editor={(options) => textEditor(options)}
       ></Column>
       <Column
         filter
@@ -92,6 +117,7 @@ const DatatableComp = (props) => {
         sortable
         field="origin"
         header="Country of Origin"
+        editor={(options) => textEditor(options)}
       ></Column>
       <Column
         filter
@@ -99,6 +125,7 @@ const DatatableComp = (props) => {
         sortable
         field="carbonIntensity"
         header="Carbon Intensity"
+        editor={(options) => textEditor(options)}
       ></Column>
       <Column
         filter
@@ -107,6 +134,7 @@ const DatatableComp = (props) => {
         align='right'
         field="quantity"
         header="Quantity"
+        editor={(options) => textEditor(options)}
       ></Column>
       <Column
         filter
@@ -114,6 +142,7 @@ const DatatableComp = (props) => {
         sortable
         field="UoM"
         header="Unit of Measure"
+        editor={(options) => textEditor(options)}
       ></Column>
       <Column
         filter
@@ -121,7 +150,12 @@ const DatatableComp = (props) => {
         sortable
         field="BatchNo"
         header="Batch Number"
+        editor={(options) => textEditor(options)}
       ></Column>
+      {/* <Column rowEditor={allowEdit}
+       headerStyle={{ width: '10%', minWidth: '8rem' }}
+       bodyStyle={{ textAlign: 'center' }}>
+      </Column> */}
     </DataTable>
   );
 };

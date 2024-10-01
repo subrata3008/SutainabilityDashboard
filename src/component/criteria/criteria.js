@@ -114,7 +114,10 @@ const Criteria = () => {
           <i className="fa fa-download" aria-hidden="true"></i>Download to Excel
         </span>
       </div> 
-        <DatatableComp salesTableData={salesTableData} isLoading={isLoading} /> 
+        <DatatableComp 
+        salesTableData={salesTableData}
+        setSalesTableData={setSalesTableData}
+         isLoading={isLoading} /> 
   
       </div>
   
