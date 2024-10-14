@@ -51,7 +51,10 @@ const DatatableComp = (props) => {
       selection={selectedDatas}
       onSelectionChange={(e) => {
         setSelectedDatas(e.value);
-      }}
+      }}      
+      paginator
+      rows={27}
+      rowsPerPageOptions={[5, 10, 25, 50]} 
       dataKey="id"
       tableStyle={{
         minWidth: "20rem",

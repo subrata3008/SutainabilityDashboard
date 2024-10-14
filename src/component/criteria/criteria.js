@@ -107,7 +107,7 @@ const Criteria = () => {
     <ApiLoader isLoading={isLoading}/> 
 
     
-    <main> 
+    <main className="criteria-wrapper"> 
       <div className="content-columns">
       <div className="btnContainer">
         <span className="downloadBtn" onClick={exportExcel}>
