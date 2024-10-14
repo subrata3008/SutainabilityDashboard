@@ -53,7 +53,7 @@ const DatatableComp = (props) => {
         setSelectedDatas(e.value);
       }}      
       paginator
-      rows={27}
+      rows={15}
       rowsPerPageOptions={[5, 10, 25, 50]} 
       dataKey="id"
       tableStyle={{
