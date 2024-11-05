@@ -110,9 +110,9 @@ const Criteria = () => {
     <main className="criteria-wrapper"> 
       <div className="content-columns">
       <div className="btnContainer">
-        <span className="downloadBtn" onClick={exportExcel}>
-          <i className="fa fa-download" aria-hidden="true"></i>Download to Excel
-        </span>
+        <button className="downloadBtn" onClick={exportExcel}>
+          <i className="fa fa-download" aria-hidden="true" alt="Download to Excel"></i>Download to Excel
+        </button>
       </div> 
         <DatatableComp 
         salesTableData={salesTableData}

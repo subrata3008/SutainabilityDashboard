@@ -228,9 +228,9 @@ const Matching = () => {
             <span>Year:</span>
             <input type="text" onChange={(e) => setYearValue(e.target.value)} />
           </div>
-          <span className="saveBtn" onClick={() => callInputcriteria("filter")}>
+          <button className="saveBtn" alt="Filter"  onClick={() => callInputcriteria("filter")}>
             Filter
-          </span>
+          </button>
         </div>
 
         <div className="matching table-container">
@@ -241,12 +241,12 @@ const Matching = () => {
         </div> 
 
         <div className="manual-filter-container">
-          <span className="saveBtn" onClick={bioMatchingFunc}>
+          <button className="saveBtn" alt="Auto" onClick={bioMatchingFunc}>
             <i className="fa fa-magic" aria-hidden="true"></i> Auto
-          </span>
-          <span className="saveBtn" onClick={manualMatching}>
+          </button>
+          <button className="saveBtn" alt="Manual" onClick={manualMatching}>
             <i className="fa fa-hand-rock-o" aria-hidden="true"></i> Manual
-          </span>
+          </button>
         </div>
         {isNodata && (
           <div className="centerText">

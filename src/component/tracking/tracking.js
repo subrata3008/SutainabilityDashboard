@@ -121,9 +121,9 @@ const Tracking = () => {
             <span>Year:</span>
             <input type="text" onChange={(e) => setYearValue(e.target.value)} />
           </div>
-          <span className="saveBtn" onClick={() => callTrackingTableData()}>
+          <button className="saveBtn" alt="Filter" onClick={() => callTrackingTableData()}>
             Filter
-          </span>
+          </button>
         </div>
 
         <div className="table-container">
@@ -134,9 +134,9 @@ const Tracking = () => {
         </div>
         {trackTableData.length > 1 &&
           <div className="reportBtn-container">
-            <span className="saveBtn generateBtn" onClick={generateReport}>
+            <button className="saveBtn generateBtn" alt="Generate PoS" onClick={generateReport}>
               <i className="fa fa-file-excel-o" aria-hidden="true"></i> Generate PoS
-            </span>
+            </button>
           </div>
         }
       </div>
