@@ -160,7 +160,7 @@ function FileInput() {
     <ToastContainer/>
     <ApiLoader isLoading={isLoading} />
     <div className="wrapper"> 
-      <h1 className="name" onClick={getPresignedUrl}>File Selection</h1>
+      <h1  onClick={getPresignedUrl}>File Selection</h1>
       
       <input type="file" onChange={handleFileChange} 
               aria-label="file"/>
