@@ -45,11 +45,9 @@ function App({ signOut, user }) {
                     width="30"
                     alt="logo"
                   />
-                </div>{" "}
-                Sustainability Dashboard{" "}
-              </div>
+                </div>Sustainability Dashboard</div>
 
-              <ul>
+              <ul className="menu_wrapper">
                 {/* <li class="active">
       <a href="#">Dashboard</a>
      

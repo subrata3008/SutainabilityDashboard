@@ -73,6 +73,13 @@ a.active::before{
 .downloadBtn i{
   margin-right: 5px !important;
 }
+/* .menu_wrapper li a{
+  background-color: #2a65c5; ;
+  color: #101b2d;
+} */
+.active{
+  color: #fff !important;
+}
 .downloadBtn,.saveBtn,.searchBtn{
   cursor: pointer;
   float: right;
