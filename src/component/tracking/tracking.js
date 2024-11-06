@@ -114,12 +114,14 @@ const Tracking = () => {
             <span>Month:</span>
             <input
               type="text"
+              aria-label="Month"
               onChange={(ev) => setMonthValue(ev.target.value)}
             />
           </div>
           <div className="filterOptionsTop">
             <span>Year:</span>
-            <input type="text" onChange={(e) => setYearValue(e.target.value)} />
+            <input type="text"
+              aria-label="Year"  onChange={(e) => setYearValue(e.target.value)} />
           </div>
           <button className="saveBtn" alt="Filter" onClick={() => callTrackingTableData()}>
             Filter

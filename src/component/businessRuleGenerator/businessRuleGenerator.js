@@ -195,6 +195,7 @@ const BusinessRuleGenerator = () => {
               cols="70"
               type="text"
               value={podata}
+              aria-label="Questions" 
               onChange={updateInputValue}
             />
             {!isValidPodata && (

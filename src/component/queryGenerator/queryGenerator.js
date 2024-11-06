@@ -74,6 +74,7 @@ const QueryGenerator = () => {
               rows="5"
               cols="70"
               type="text"
+              aria-label="Questions"
               value={podata}
               onChange={updateInputValue}
             />
