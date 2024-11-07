@@ -230,7 +230,7 @@ const Matching = () => {
             <input type="text"
               aria-label="Year" onChange={(e) => setYearValue(e.target.value)} />
           </div>
-          <button className="saveBtn" alt="Filter"  onClick={() => callInputcriteria("filter")}>
+          <button title='Filter' className="saveBtn" alt="Filter"  onClick={() => callInputcriteria("filter")}>
             Filter
           </button>
         </div>
@@ -243,10 +243,10 @@ const Matching = () => {
         </div> 
 
         <div className="manual-filter-container">
-          <button className="saveBtn" alt="Auto" onClick={bioMatchingFunc}>
+          <button className="saveBtn" title="Auto" alt="Auto" onClick={bioMatchingFunc}>
             <i className="fa fa-magic" aria-hidden="true"></i> Auto
           </button>
-          <button className="saveBtn" alt="Manual" onClick={manualMatching}>
+          <button className="saveBtn" title="Manual" alt="Manual" onClick={manualMatching}>
             <i className="fa fa-hand-rock-o" aria-hidden="true"></i> Manual
           </button>
         </div>
