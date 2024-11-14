@@ -53,7 +53,7 @@ function App({ signOut, user }) {
      
     </li> */}
                 <li>
-                  <a href="#0">Allocation</a>
+                  {/* <a href="#0">Allocation</a> */}
                   <ul>
                     <li>
                       <NavLink
@@ -87,9 +87,9 @@ function App({ signOut, user }) {
                     </li>
                   </ul>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#0">Credit</a>
-                </li>
+                </li> */}
                 <li>
                   <NavLink
                     to="/utility"
