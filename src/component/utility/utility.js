@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./utility.css";  
 import ApiLoader from "../loader/loader";  
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Utility = () => {
   const [podata, setPodata] = useState('');
@@ -28,6 +30,21 @@ const Utility = () => {
       .then(post => {
         setIsLoading(false);
       //debugger;
+      if(post.records === "Invalid Data"){
+        
+        setCarbonData("");
+        toast.warning("Invalid Data", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+           });  
+           return;
+      }
       setCarbonData(post.records);
       setIsValidPodata(true)
       console.log(carbonData)
@@ -40,6 +57,7 @@ const Utility = () => {
 
   return (
     <> 
+    <ToastContainer/>
     <ApiLoader isLoading={isLoading}/>
     <div className="card">
       <div className="podData-wrapper">
