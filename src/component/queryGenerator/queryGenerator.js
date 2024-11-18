@@ -79,7 +79,7 @@ const QueryGenerator = () => {
               onChange={updateInputValue}
             />
             {!isValidPodata && (
-              <span style={{ color: "red" }}>
+              <span className="errMsg">
                 Please enter valid Query
               </span>
             )}

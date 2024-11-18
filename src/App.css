@@ -93,3 +93,6 @@ a.active::before{
   margin:0 12vh;
   margin-left: 1%;
 }
+.errMsg{
+  color: red;
+}

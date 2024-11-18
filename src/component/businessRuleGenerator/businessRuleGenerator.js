@@ -199,7 +199,7 @@ const BusinessRuleGenerator = () => {
               onChange={updateInputValue}
             />
             {!isValidPodata && (
-              <span style={{ color: "red" }}>
+              <span className="errMsg">
                 Please enter valid Questions
               </span>
             )}

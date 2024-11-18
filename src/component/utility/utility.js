@@ -46,7 +46,7 @@ const Utility = () => {
         <label className="calLabel">EIS Transport Carbon Calculator: </label>
         <div className="podData-input-wrapper">
        <input type="text" value={podata} onChange={updateInputValue}/>
-       {!isValidPodata && <span style={{color:'red'}}>Please enter valid Purchase order data</span>}
+       {!isValidPodata && <span className="errMsg">Please enter valid Purchase order data</span>}
         </div>
        <button className="saveBtn calcBtn" onClick={calculateData}>Calculate</button>
       </div> 
