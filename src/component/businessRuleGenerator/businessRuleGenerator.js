@@ -200,7 +200,7 @@ const BusinessRuleGenerator = () => {
             />
             {!isValidPodata && (
               <span style={{ color: "red" }}>
-                Please enter valid Purchase order data
+                Please enter valid Questions
               </span>
             )}
           </div>

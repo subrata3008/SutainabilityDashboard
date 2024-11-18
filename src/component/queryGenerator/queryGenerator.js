@@ -80,7 +80,7 @@ const QueryGenerator = () => {
             />
             {!isValidPodata && (
               <span style={{ color: "red" }}>
-                Please enter valid Question
+                Please enter valid Query
               </span>
             )}
           </div>
