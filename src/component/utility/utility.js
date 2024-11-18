@@ -18,7 +18,8 @@ const Utility = () => {
   }
 
   const calculateData = () =>{
-    if(podata){
+    const reg= /^\d+$/;
+    if(podata && reg.test(podata)){
       setIsLoading(true);
       fetch('https://d497jytpn1.execute-api.us-east-1.amazonaws.com/EIS_calculation?PO='+podata)
       .then(data => {
@@ -26,12 +27,14 @@ const Utility = () => {
       })
       .then(post => {
         setIsLoading(false);
+      //debugger;
       setCarbonData(post.records);
       setIsValidPodata(true)
       console.log(carbonData)
       });
     }else{
       setIsValidPodata(false)
+      setPodata('')
     }
   } 
 
@@ -45,10 +48,10 @@ const Utility = () => {
        <input type="text" value={podata} onChange={updateInputValue}/>
        {!isValidPodata && <span style={{color:'red'}}>Please enter valid Purchase order data</span>}
         </div>
-       <button className="saveBtn calculate" onClick={calculateData}>Calculate</button>
+       <button className="saveBtn calcBtn" onClick={calculateData}>Calculate</button>
       </div> 
        { carbonData && 
-       <div className="cartTable">
+       <div className="utilTable">
        <table className="cartableData">
         <tbody>
         <tr>
@@ -72,8 +75,8 @@ const Utility = () => {
           <td>{carbonData.CO2e+'gCO2e/MT'}</td>
         </tr> 
         <tr>
-          <td>Quantity</td>
-          <td>{carbonData.Quantity}</td>
+          <td>Distance</td>
+          <td>{carbonData.distance}</td>
         </tr>
         <tr>
           <td>Description</td>
