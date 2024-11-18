@@ -33,7 +33,7 @@ const Utility = () => {
       if(post.records === "Invalid Data"){
         
         setCarbonData("");
-        toast.warning("Invalid Data", {
+        toast.warning(post.records, {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
