@@ -6,13 +6,14 @@
   color: #000;
 }
 .cartableData{
-  margin: auto;
-    min-width: 300px;
-    max-width: 50%;
+    margin: auto; 
     border-collapse: collapse;color: #333;
     border-radius: 0.4em; 
     float: left;
 
+}
+.utilityWrap{
+  height: auto !important;
 }
 .cartTable{
   width: 100%;
