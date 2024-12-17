@@ -26,6 +26,7 @@ a.active::before{
 }
 .signOutBtn-wrapper a{
   cursor: pointer;
+  line-height: 29px;
 }
 .signOutBtn-wrapper {
   text-align: center;
