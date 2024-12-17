@@ -1,0 +1,92 @@
+
+.popup-overlay {
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-design {
+  background: #fff ;
+}
+.modal-design .popup-content {
+    padding: 0 !important;
+    height: auto;
+    max-width: 600px;
+    overflow: hidden;
+  }
+  .modal-reset {
+    position: relative;
+    padding: 0px;
+  }
+  .modal-reset .close {
+    padding: 0;
+    margin: 0;
+    display: block;
+    background: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 31px;
+    float: right;
+    top: 0px;
+    right: 8px;
+    margin-right: 3px;
+    margin-top: -10px;
+  }
+  
+  .modal-design .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 40px 40px 40px;
+    overflow: hidden;
+  }
+  
+  .modal-design .modal-heading-box {
+    margin-bottom: 20px;
+  }
+  .modal-design .modal-heading {
+    text-align: center;
+    font-size: 32px;
+    color: black;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+  }
+  .modal-design .modal-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+  } 
+  .modal-design .modal-text {
+    margin-bottom: 20px; 
+  }
+  
+  .modal-design .modal-button {
+    height: 40px;
+    background: transparent;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .modal-design .modal-image {
+    height: 120px;
+    max-height: 140px;
+    width: 120px;
+  }
+  .modal-design .modal-img-box {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .modal-design .modal-input-box {
+    display: flex;
+    flex-direction: column;
+  }
+  
