@@ -17,9 +17,10 @@
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
+    "reactjs-popup": "^2.0.6",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
-    "xlsx": "^0.18.5"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -36,6 +37,10 @@
       "react-app/jest"
     ]
   },
+  "resolutions": {
+    "ejs": "3.1.10",
+    "nth-check": "2.0.1"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -47,5 +52,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "overrides": {
+    "nth-check": ">=2.0.2",
+    "postcss": "https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz"
   }
 }

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -23,10 +24,19 @@ import { useAuthenticator } from "@aws-amplify/ui-react";
 import BusinessRuleGenerator from "./component/businessRuleGenerator/businessRuleGenerator";
 import QueryGenerator from "./component/queryGenerator/queryGenerator";
 import FileInput from "./component/fileInput/fileInput";
+import About from "./component/about/about";
 Amplify.configure(awsExports);
 function App({ signOut, user }) {
   const { route } = useAuthenticator((context) => [context.route]);
+  const [openModal, setOpenModal] = useState(false);  
+ 
 
+  const openModalFunc = ()=> {
+    setOpenModal(true);
+  }
+  const closeModalFunc = ()=>{ 
+    setOpenModal(false);
+  }
   // Use the value of route to decide which page to render
   //return route === 'authenticated' ? <home /> : <Authenticator />;
 
@@ -35,8 +45,8 @@ function App({ signOut, user }) {
       <div className="site-wrap">
         <Router>
           <div className="grid-container">
-            <nav class="site-nav">
-              <div class="name">
+            <nav className="site-nav">
+              <div className="name">
                 <div className="logoBlock">
                   <img
                     src={logo}
@@ -46,7 +56,12 @@ function App({ signOut, user }) {
                     alt="logo"
                   />
                 </div>Sustainability Dashboard</div>
-
+                
+                <About
+                 open={openModal}
+                 closeOnDocumentClick={()=>closeModalFunc()}
+                 onClose={()=>closeModalFunc()}
+                 />
               <ul className="menu_wrapper">
                 {/* <li class="active">
       <a href="#">Dashboard</a>
@@ -133,7 +148,13 @@ function App({ signOut, user }) {
                   </ul>
                 </li>
               </ul>
+
+              
               <div className="signOutBtn-wrapper">
+              <a 
+                className="button"
+                onClick={openModalFunc}>
+                  About</a>
                 <Button
                   onClick={signOut}
                   type="submit"
