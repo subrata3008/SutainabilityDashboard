@@ -14,7 +14,7 @@ const Criteria = () => {
   const options = {
     animationEnabled: true,
     exportEnabled: false, 
-    width: 420,
+    width: 395,
     theme: "light1", // "light1", "dark1", "dark2"
     title:{
       text: "Feed Stocks"
@@ -37,7 +37,7 @@ const Criteria = () => {
   const options2 = {
     animationEnabled: true,
     exportEnabled: false, 
-    width: 420,
+    width: 395,
     theme: "light2", //"light1", "dark1", "dark2"
     title:{
       text: "Country"
