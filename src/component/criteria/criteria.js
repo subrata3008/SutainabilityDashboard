@@ -165,7 +165,7 @@ const Criteria = () => {
     <>
       <ApiLoader isLoading={isLoading} />
 
-      <main className="criteria-wrapper">
+      <main className={"criteria-wrapper " + (!expanded ? "expandedCriteriaDiv" : '')}>
         {!expanded ||
           <div className="chartSection">
             <CanvasJSChart options={options}

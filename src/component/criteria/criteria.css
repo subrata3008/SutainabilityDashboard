@@ -33,6 +33,10 @@
 
  .expandedDiv{
     width: 83vw !important;
+    padding: 0 !important;
+ }
+ .expandedCriteriaDiv{
+    overflow-x: hidden !important;
  }
  .site-nav a {
      color: inherit;
