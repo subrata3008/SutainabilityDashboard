@@ -165,7 +165,7 @@ console.log(expanded);
     <>
       <ApiLoader isLoading={isLoading} />
 
-      <main className={"criteria-wrapper " + (!expanded ? "expandedCriteriaDiv" : '')}>
+      <main className={"criteria-wrapper " + (expanded ? "expandedCriteriaDiv" : '')}>
         {expanded ||
           <div className="chartSection">
             <CanvasJSChart options={options}
