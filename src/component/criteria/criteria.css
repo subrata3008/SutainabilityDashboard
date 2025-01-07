@@ -167,7 +167,7 @@
     /* flex-direction: column; */
     justify-content: space-between;
     padding: 1% 0 0 1%;
-    width: auto;
+    width: 85vw;
  }
 
  .content-columns .col {
