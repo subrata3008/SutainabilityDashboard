@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../criteria/criteria.css"; 
+import "../criteria/criteria.css";
 import DatatableComp from "../datatable/datatable";
-import ApiLoader from "../loader/loader"; 
+import ApiLoader from "../loader/loader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CanvasJSReact from '@canvasjs/react-charts';
@@ -9,19 +9,20 @@ const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const Criteria = () => {
   const [salesTableData, setSalesTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
-  
+  const [expanded, setExpanded] = useState(false);
+
+
   const options = {
     animationEnabled: true,
-    exportEnabled: false, 
+    exportEnabled: false,
     width: 395,
     theme: "light1", // "light1", "dark1", "dark2"
-    title:{
+    title: {
       text: "Feed Stocks"
     },
     data: [{
       type: "pie",
-      indexLabel: "{label}: {y}%",		
+      indexLabel: "{label}: {y}%",
       startAngle: -90,
       dataPoints: [
         { y: 20, label: "Feed Stock 1" },
@@ -29,17 +30,17 @@ const Criteria = () => {
         { y: 20, label: "Feed Stock 3" },
         { y: 14, label: "Feed Stock 4" },
         { y: 12, label: "Feed Stock 5" },
-        { y: 10, label: "Feed Stock 6" }	
+        { y: 10, label: "Feed Stock 6" }
       ]
     }]
   }
 
   const options2 = {
     animationEnabled: true,
-    exportEnabled: false, 
+    exportEnabled: false,
     width: 395,
     theme: "light2", //"light1", "dark1", "dark2"
-    title:{
+    title: {
       text: "Country"
     },
     axisY: {
@@ -109,51 +110,51 @@ const Criteria = () => {
   useEffect(() => {
     setSalesTableData([]);
     const InputCriteria = fetch('https://jca5zw5ei2.execute-api.us-east-1.amazonaws.com/InputCriteria')
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } 
-      toast.error("Internal server error", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        toast.error("Internal server error", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
-    });
-    setIsLoading(true); 
+    setIsLoading(true);
     Promise.all([InputCriteria])
-      .then((InputCriteriaData) => { 
+      .then((InputCriteriaData) => {
         setSalesTableData([]);
-        setIsLoading(false); 
+        setIsLoading(false);
         let dataWithBatch = InputCriteriaData[0].records.filter((eachdata) =>
-        eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
+          eachdata.hasOwnProperty("batch") && eachdata.hasOwnProperty("PO")
         );
-        let flag = 0; 
-        let finalData = dataWithBatch.map((eachbatchData,indexOuter) => {
-          return eachbatchData.batch.map((eachBatch,index) => {
-           // debugger
-            flag++; 
+        let flag = 0;
+        let finalData = dataWithBatch.map((eachbatchData, indexOuter) => {
+          return eachbatchData.batch.map((eachBatch, index) => {
+            // debugger
+            flag++;
             return {
               id: flag,
-              feedStockStype:  eachbatchData.FeedStockType || '',
+              feedStockStype: eachbatchData.FeedStockType || '',
               BatchNo: eachBatch.BatchNo || '',
               RefineryCertID: eachBatch.RefineryCertID || '',
               origin: eachBatch.origin || '',
               quantity: eachbatchData.LoadedQuantity || '',
               UoM: eachbatchData.UoM,
               po: eachbatchData.PO || '',
-              Plant:eachbatchData.Plant || '',
-              POdate:eachbatchData.POdate || '',
-              POItem:eachbatchData.POItem || '',
+              Plant: eachbatchData.Plant || '',
+              POdate: eachbatchData.POdate || '',
+              POItem: eachbatchData.POItem || '',
               carbonIntensity: eachBatch.carbonIntensity || ''
             };
           });
         });
-        setSalesTableData(finalData.flat(Infinity)); 
+        setSalesTableData(finalData.flat(Infinity));
       })
       .catch((error) => {
         console.error(error);
@@ -161,34 +162,38 @@ const Criteria = () => {
   }, []);
 
   return (
-    <> 
-    <ApiLoader isLoading={isLoading}/> 
+    <>
+      <ApiLoader isLoading={isLoading} />
 
-    <main className="criteria-wrapper"> 
-      <div className="chartSection">
-        <CanvasJSChart options = {options} 
-          /* onRef={ref => this.chart = ref} */
-        /> 
-        <br/>
-          <CanvasJSChart options = {options2} 
-          /* onRef={ref => this.chart = ref} */
-        />
-      </div> 
-      <div className="content-columns">
-      <div className="btnContainer">
-        <button className="downloadBtn" title='Download to Excel' onClick={exportExcel}>
-          <i className="fa fa-download" aria-hidden="true" alt="Download to Excel"></i>Download to Excel
-        </button>
-      </div> 
-        <DatatableComp 
-        salesTableData={salesTableData}
-        setSalesTableData={setSalesTableData}
-         isLoading={isLoading} /> 
-  
-      </div>
-  
-    </main>
-   
+      <main className="criteria-wrapper">
+        {!expanded ||
+          <div className="chartSection">
+            <CanvasJSChart options={options}
+            /* onRef={ref => this.chart = ref} */
+            />
+            <br />
+            <CanvasJSChart options={options2}
+            /* onRef={ref => this.chart = ref} */
+            />
+          </div>
+        }
+        <div className={"content-columns " + (!expanded ? "expandedDiv" : '')}>
+          <div className="btnContainer">
+            <button className="downloadBtn" title='Download to Excel' onClick={exportExcel}>
+              <i className="fa fa-download" aria-hidden="true" alt="Download to Excel"></i>Download to Excel
+            </button>
+            {!expanded || <i class="fa fa-expand zoomBtn" title="Expand" aria-hidden="true" onClick={() => setExpanded(!expanded)}></i>}
+            {expanded || <i class="fa fa-compress zoomBtn" title="Compress" aria-hidden="true" onClick={() => setExpanded(!expanded)}></i>}
+          </div>
+          <DatatableComp
+            salesTableData={salesTableData}
+            setSalesTableData={setSalesTableData}
+            isLoading={isLoading} />
+
+        </div>
+
+      </main>
+
     </>
   );
 };
