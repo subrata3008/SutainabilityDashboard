@@ -33,6 +33,10 @@
  }
 
  .expandedDiv{
+    -webkit-transition: width 1s ease;
+    -moz-transition: width 1s ease;
+    -o-transition: width 1s ease;
+    transition: width 1s ease;
     width: 83vw !important;
     padding: 0 !important;
  }

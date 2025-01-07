@@ -182,8 +182,8 @@ console.log(expanded);
             <button className="downloadBtn" title='Download to Excel' onClick={exportExcel}>
               <i className="fa fa-download" aria-hidden="true" alt="Download to Excel"></i>Download to Excel
             </button>
-            {!expanded || <i class="fa fa-expand zoomBtn" title="Expand" aria-hidden="true" onClick={() => setExpanded(!expanded)}></i>}
-            {expanded || <i class="fa fa-compress zoomBtn" title="Compress" aria-hidden="true" onClick={() => setExpanded(!expanded)}></i>}
+            {expanded || <i class="fa fa-expand zoomBtn" title="Expand" aria-hidden="true" onClick={() => setExpanded(!expanded)}></i>}
+            {!expanded || <i class="fa fa-compress zoomBtn" title="Compress" aria-hidden="true" onClick={() => setExpanded(!expanded)}></i>}
           </div>
           <DatatableComp
             salesTableData={salesTableData}
