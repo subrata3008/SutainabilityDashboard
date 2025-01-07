@@ -39,7 +39,7 @@ const Criteria = () => {
     animationEnabled: true,
     exportEnabled: false,
     width: 395,
-    theme: "light2", //"light1", "dark1", "dark2"
+    theme: "light1", //"light1", "dark1", "dark2"
     title: {
       text: "Country"
     },
