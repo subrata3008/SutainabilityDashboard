@@ -10,7 +10,7 @@ const Criteria = () => {
   const [salesTableData, setSalesTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [expanded, setExpanded] = useState(false);
-
+console.log(expanded);
 
   const options = {
     animationEnabled: true,
@@ -166,7 +166,7 @@ const Criteria = () => {
       <ApiLoader isLoading={isLoading} />
 
       <main className={"criteria-wrapper " + (!expanded ? "expandedCriteriaDiv" : '')}>
-        {!expanded ||
+        {expanded ||
           <div className="chartSection">
             <CanvasJSChart options={options}
             /* onRef={ref => this.chart = ref} */
@@ -177,7 +177,7 @@ const Criteria = () => {
             />
           </div>
         }
-        <div className={"content-columns " + (!expanded ? "expandedDiv" : '')}>
+        <div className={"content-columns " + (expanded ? "expandedDiv" : '')}>
           <div className="btnContainer">
             <button className="downloadBtn" title='Download to Excel' onClick={exportExcel}>
               <i className="fa fa-download" aria-hidden="true" alt="Download to Excel"></i>Download to Excel
