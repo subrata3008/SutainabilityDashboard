@@ -4,11 +4,69 @@ import DatatableComp from "../datatable/datatable";
 import ApiLoader from "../loader/loader"; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import CanvasJSReact from '@canvasjs/react-charts';
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const Criteria = () => {
   const [salesTableData, setSalesTableData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);  
+  const [isLoading, setIsLoading] = useState(false);
+  
+  
+  const options = {
+    animationEnabled: true,
+    exportEnabled: false, 
+    width: 420,
+    theme: "light1", // "light1", "dark1", "dark2"
+    title:{
+      text: "Feed Stocks"
+    },
+    data: [{
+      type: "pie",
+      indexLabel: "{label}: {y}%",		
+      startAngle: -90,
+      dataPoints: [
+        { y: 20, label: "Feed Stock 1" },
+        { y: 24, label: "Feed Stock 2" },
+        { y: 20, label: "Feed Stock 3" },
+        { y: 14, label: "Feed Stock 4" },
+        { y: 12, label: "Feed Stock 5" },
+        { y: 10, label: "Feed Stock 6" }	
+      ]
+    }]
+  }
 
+  const options2 = {
+    animationEnabled: true,
+    exportEnabled: false, 
+    width: 420,
+    theme: "light2", //"light1", "dark1", "dark2"
+    title:{
+      text: "Country"
+    },
+    axisY: {
+      includeZero: true
+    },
+    data: [{
+      type: "column", //change type to bar, line, area, pie, etc
+      //indexLabel: "{y}", //Shows y value on all Data Points
+      indexLabelFontColor: "#5A5757",
+      indexLabelPlacement: "outside",
+      dataPoints: [
+        { x: 10, y: 71 },
+        { x: 20, y: 55 },
+        { x: 30, y: 50 },
+        { x: 40, y: 65 },
+        { x: 50, y: 71 },
+        { x: 60, y: 68 },
+        { x: 70, y: 38 },
+        { x: 80, y: 92, indexLabel: "Highest" },
+        { x: 90, y: 54 },
+        { x: 100, y: 60 },
+        { x: 110, y: 21 },
+        { x: 120, y: 49 },
+        { x: 130, y: 36 }
+      ]
+    }]
+  }
   /**
    * Export as Excel Method
    */
@@ -106,8 +164,16 @@ const Criteria = () => {
     <> 
     <ApiLoader isLoading={isLoading}/> 
 
-    
     <main className="criteria-wrapper"> 
+      <div className="chartSection">
+        <CanvasJSChart options = {options} 
+          /* onRef={ref => this.chart = ref} */
+        /> 
+        <br/>
+          <CanvasJSChart options = {options2} 
+          /* onRef={ref => this.chart = ref} */
+        />
+      </div> 
       <div className="content-columns">
       <div className="btnContainer">
         <button className="downloadBtn" title='Download to Excel' onClick={exportExcel}>

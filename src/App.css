@@ -89,7 +89,7 @@ a.active::before{
 }
 .downloadBtn,.saveBtn,.searchBtn{
   cursor: pointer;
-  float: right;
+  float: left;
   border: 1px solid gray;
   border-radius: 2px;
   background: #2a65c5;
@@ -102,4 +102,10 @@ a.active::before{
 }
 .errMsg{
   color: red;
+}
+.canvasjs-chart-credit{
+  display: none;
+}
+.short-nav{
+  width: 4%
 }

@@ -17,11 +17,11 @@
  }
 
  .site-nav {
-     background: #587aa7;
-     color: white;
-     display: flex;
-     flex-direction: column;
-     width: 260px;
+    background: #587aa7;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
  }
 
  .site-nav a {
@@ -150,17 +150,24 @@
  main>header {
      padding: 3rem 3rem 0 3rem;
  }
-
+ .btnContainer { 
+    padding: 1% 1% 1% 0 !important;
+}
  .content-columns {
-     padding: 1rem .5rem;
-     display: flex;
-     background: #e5e5e9;
-     flex-direction: column;
-     width: 85%;
+    padding: 1rem .5rem;
+    display: flex;
+    background: #e5e5e9;
+    flex-direction: column;
+    width: calc(100% - 400px);
  }
 
  .criteria-wrapper {
-     overflow: scroll;
+    overflow: scroll;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    padding: 1% 0 0 1%;
+    width: auto;
  }
 
  .content-columns .col {
@@ -239,3 +246,12 @@
      background: #dfe0e2;
      color: #868d99;
  }
+
+ .chartSection{
+    display: flex;
+    flex-direction: column; 
+    width: 28%;
+ }
+ /* .chartSection div{
+    width: 50vw !important;
+ } */

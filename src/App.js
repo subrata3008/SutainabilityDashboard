@@ -28,26 +28,29 @@ import About from "./component/about/about";
 Amplify.configure(awsExports);
 function App({ signOut, user }) {
   const { route } = useAuthenticator((context) => [context.route]);
-  const [openModal, setOpenModal] = useState(false);  
- 
+  const [openModal, setOpenModal] = useState(false);
+  const [hideMenu, setHidemenu] = useState(false);
 
-  const openModalFunc = ()=> {
+
+  const openModalFunc = () => {
     setOpenModal(true);
   }
-  const closeModalFunc = ()=>{ 
+  const closeModalFunc = () => {
     setOpenModal(false);
   }
   // Use the value of route to decide which page to render
   //return route === 'authenticated' ? <home /> : <Authenticator />;
+
+
 
   return (
     route === "authenticated" && (
       <div className="site-wrap">
         <Router>
           <div className="grid-container">
-            <nav className="site-nav">
+            <nav className={"site-nav" + (hideMenu ? ' short-nav' : '')}>
               <div className="name">
-                <div className="logoBlock">
+                <div className="logoBlock" onClick={() => setHidemenu(!hideMenu)}>
                   <img
                     src={logo}
                     className="logo"
@@ -55,13 +58,15 @@ function App({ signOut, user }) {
                     width="30"
                     alt="logo"
                   />
-                </div>Sustainability Dashboard</div>
-                
-                <About
-                 open={openModal}
-                 closeOnDocumentClick={()=>closeModalFunc()}
-                 onClose={()=>closeModalFunc()}
-                 />
+                </div>
+                {hideMenu || 'Sustainability Dashboard'}
+                </div>
+
+              <About
+                open={openModal}
+                closeOnDocumentClick={() => closeModalFunc()}
+                onClose={() => closeModalFunc()}
+              />
               <ul className="menu_wrapper">
                 {/* <li class="active">
       <a href="#">Dashboard</a>
@@ -114,7 +119,7 @@ function App({ signOut, user }) {
                   >
                     Utility
                   </NavLink>
-                  <ul> 
+                  <ul>
                     <li>
                       <NavLink
                         to="/brg"
@@ -149,11 +154,11 @@ function App({ signOut, user }) {
                 </li>
               </ul>
 
-              
+
               <div className="signOutBtn-wrapper">
-              <a 
-                className="button"
-                onClick={openModalFunc}>
+                <a
+                  className="button"
+                  onClick={openModalFunc}>
                   About</a>
                 <Button
                   onClick={signOut}
@@ -168,6 +173,7 @@ function App({ signOut, user }) {
               </div>
             </nav>
 
+            {/* <div className="right-sect-wrapper"> */}
             <Routes>
               <Route exact path="/" element={<Criteria />}></Route>
               <Route exact path="/matching" element={<Matching />}></Route>
@@ -189,6 +195,7 @@ function App({ signOut, user }) {
                 element={<FileInput />}
               ></Route>
             </Routes>
+              {/* </div> */}
           </div>
         </Router>
       </div>
